@@ -57,3 +57,6 @@ header {
   font-size: 30px;
   font-family: 'Abel', Arial;
 }
+.nav-profile:hover {
+  cursor: pointer;
+}
