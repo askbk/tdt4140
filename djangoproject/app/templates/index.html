@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> test </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
+
+  </head>
+  <body>
+    <header>
+      <div class="logo"> MOMENTUM </div>
+      <div class="link-container">
+        <div class="nav-link"><span>Startups<span></div>
+        <div class="nav-link"><span>Adverts<span></div>
+        <div class="nav-link"><span>Investors<span></div>
+      </div>
+      <div class="nav-profile"> PROFILE </div>
+    </header>
+    <ul>
+    {% for advert in all_adverts %}
+      <li><a href=" {% url 'advert' advert.id %}"> {{ advert.title }} </a></li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
