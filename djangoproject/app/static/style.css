@@ -2,3 +2,31 @@ body {
   background: lightyellow url("images/background.jpg") no-repeat;
   margin: 0;
 }
+
+.grid-container {
+  width: 90%;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-gap: 1em;
+  /*grid-auto-rows: minmax(75px, auto);*/
+  grid-auto-rows: 75px;
+}
+
+.grid-container div {
+  background: lightyellow;
+  padding: 0.5em;
+}
+.grid-container div:nth-child(odd) {
+  background: yellow;
+}
+
+.grid-nested {
+  cursor: pointer;
+  grid-template-columns: 50px 2fr 2fr;
+}
+
+.filter {
+  align-self: start;
+  grid-row: 1/5;
+}

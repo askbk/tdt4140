@@ -4,11 +4,44 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils import timezone
 
-# Create your models here.
+class Address(models.Model):
+    postal_code = models.IntegerField()
+    city = models.CharField(max_length=120)
+    street_address = models.CharField(max_length=120)
+
+    def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
+        return self.street_address + " - " + str(self.postal_code).zfill(4) + ", " + self.city
+
+    class Meta:
+        verbose_name = "Address"
+        verbose_name_plural = "Addresses"
+
+class Startup(models.Model):
+    bio = models.TextField(max_length=500, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, default=1, on_delete=models.CASCADE)
+
+    def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
+        return self.user.first_name
+
+class Person(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+
+    def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
+        return self.user.first_name
+
+class Investor(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+
+    def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
+        return self.user.first_name
+
 class Advert(models.Model):
     title = models.CharField(max_length=120)
-    company = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-    deadline = models.DateTimeField()
+    company = models.ForeignKey(Startup, default=1, on_delete=models.CASCADE)
+    deadline = models.DateField()
     available_positions = models.IntegerField()
     description = models.TextField()
 

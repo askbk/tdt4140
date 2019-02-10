@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> {% block title %} Momentum {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    {% block extra-stylesheets %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block header %}
+    <header>
+      <div class="logo"> MOMENTUM </div>
+      <div class="link-container">
+        <div class="nav-link"><span>Startups</span></div>
+        <div class="nav-link"><span>Adverts</span></div>
+        <div class="nav-link"><span>Investors</span></div>
+      </div>
+      <div class="nav-profile"> PROFILE </div>
+    </header>
+    {% endblock %}
+    <div class="content">
+    {% block content %}
+    {% endblock %}
+    </div>
+  </body>
+</html>

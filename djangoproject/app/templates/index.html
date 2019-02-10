@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title> test </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
 
-  </head>
-  <body>
-    <header>
-      <div class="logo"> MOMENTUM </div>
-      <div class="link-container">
-        <div class="nav-link"><span>Startups<span></div>
-        <div class="nav-link"><span>Adverts<span></div>
-        <div class="nav-link"><span>Investors<span></div>
-      </div>
-      <div class="nav-profile"> PROFILE </div>
-    </header>
-    <ul>
-    {% for advert in all_adverts %}
-      <li><a href=" {% url 'advert' advert.id %}"> {{ advert.title }} </a></li>
-    {% endfor %}
+{% extends "base.html" %}
+
+{% block title %} Momentum Front Page {% endblock %}
+
+{% block content %}
+
+<div class="grid-container">
+  <div class="filter">Filter</div>
+  {% for advert in all_adverts %}
+  <div onclick="location.href='{% url 'advert' advert.id %}';" class="grid-nested item{{advert.id}}">
+    <img src="images/advert{{company.id}}.png" class="element-image"/>
+    <p class="element-title">{{ advert.title }}</p>
+    <ul class="element-list">
+      <li> Startup: {{ advert.company.first_name }} </li>
+      <li> Location: {{ advert.company.address }}</li>
+      <li> Deadline: {{ advert.deadline }} </li>
+      <li> {{ advert.available_positions }} available positions</li>
     </ul>
-  </body>
-</html>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

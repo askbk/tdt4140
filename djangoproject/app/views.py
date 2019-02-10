@@ -17,3 +17,8 @@ def advert(request, id): #Se urls.py for å se når denne aktiveres
         'advert': advert
     }
     return render(request, 'advert.html', context) #sender besøkende til html-dokumentet
+
+def login(request):
+    if user.is_authenticated:
+        return render(request, 'profile.html', context)
+    return render(request, 'login.html', context)
