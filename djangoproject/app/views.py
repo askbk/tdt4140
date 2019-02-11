@@ -22,6 +22,19 @@ def login(request):
         return HttpResponseRedirect('/profile/'+str(request.user.id))
     return render(request, 'login.html')
 
+def register(request):
+    return render(request, 'register.html')
+
+def register_startup(request):
+    return render(request, 'index.html')
+
+def register_person(request):
+    return render(request, 'index.html')
+
+def register_investor(request):
+    return render(request, 'index.html')
+
+
 def profile(request, id):
     user = User.objects.get(id=id)
     if user.groups.filter(name='Startup').exists():
@@ -70,6 +83,8 @@ def adverts(request):
 def investors(request):
     return render(request, "investors.html")
 
+
+'''
 def register_startup(request):
     user_form = UserCreationForm(request.POST)
     startup_form = StartupForm()
@@ -80,7 +95,7 @@ def register_startup(request):
         'address_form': address_form,
     }
     return render(request,'register_startup.html', context)
-'''
+
 def register_user(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
