@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup, Tag, Phase, StartupForm, AddressForm
+from app.models import Advert, Startup, Tag, Phase, Address
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from app.forms import StartupForm, AddressForm
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
@@ -26,7 +27,24 @@ def register(request):
     return render(request, 'register.html')
 
 def register_startup(request):
-    return render(request, 'index.html')
+    user_form = UserCreationForm(request.POST)
+    address_form = AddressForm(request.POST)
+    startup_form = StartupForm(request.POST)
+    context = {
+        'user_form': user_form,
+        'address_form': address_form,
+        'startup_form': startup_form,
+    }
+    if request.method == 'POST':
+        if user_form.is_valid() and startup_form.is_valid() and address_form.is_valid():
+            user_form.save()
+            address_form.save()
+            a = startup_form.save(commit=False)
+            a.user = User.objects.latest('date_joined')
+            a.address = Address.objects.all().order_by("-id")[0]
+            a.save()
+            return HttpResponseRedirect("/index/")
+    return render(request, 'register_startup.html', context)
 
 def register_person(request):
     return render(request, 'index.html')

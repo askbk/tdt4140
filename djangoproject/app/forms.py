@@ -1,10 +1,20 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Startup
+from app.models import Address, Startup
+from django.forms import ModelForm
 
 
+class AddressForm(ModelForm):
+    class Meta:
+        model = Address
+        fields = ['postal_code', 'city', 'street_address']
 
+class StartupForm(ModelForm):
+    class Meta:
+        model = Startup
+        fields = ['bio', 'tags','employees','user']
+        exclude = ('user','address')
 
 
 """
