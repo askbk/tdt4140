@@ -16,12 +16,6 @@ def advert(request, id): #Se urls.py for å se når denne aktiveres
     }
     return render(request, 'advert.html', context) #sender besøkende til html-dokumentet
 
-def startup(request, id):
-    startup = get_object_or_404(Startup, id=id)
-    context = {
-        'startup': startup
-    }
-    return render(request, 'startup.html', context)
 
 def login(request):
     if request.user.is_authenticated:
@@ -29,8 +23,13 @@ def login(request):
     return render(request, 'login.html')
 
 def profile(request, id):
+    user = User.objects.get(id=id)
+    if user.groups.filter(name='Startup').exists():
+        profile = Startup.objects.get(user_id=id)
+
     context = {
-        'user': request.user
+        'user': request.user,
+        'profile': profile,
     }
     return render(request, 'profile.html', context)
 

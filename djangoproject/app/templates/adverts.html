@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
 {% extends "base.html" %}
 
+{% load static %}
 {% block title %} Adverts | Momentum {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
   {% for advert in adverts %}
   <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}}">
     <div class="element-image-container">
-      <img src="../static/images/startup{{ advert.startup.id }}.png" class="element-image"  alt="{{adverts.startup}} image can't load"/>
+      <img src="{% static advert.startup.image.url %}" class="element-image"  alt="{{adverts.startup}} image can't load"/>
     </div>
     <div>
       <p class="element-title bold">{{ advert.title }}</p>
