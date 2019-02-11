@@ -1,0 +1,28 @@
+.circle-container {
+  width: 600px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  margin: 0;
+
+}
+
+.circle {
+  display: inline-block;
+  text-align: center;
+  font-size:25px;
+  line-height:196px;
+  width:196px;
+  height:196px;
+  background: #555;
+  color: #DDD;
+  border-radius: 100%;
+}
+
+.circle span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
