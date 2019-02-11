@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <select onchange="updateForm()">
+    <option value="startup"> Startup</option>
+    <option value="investor">Investor</option>
+    <option value="person">Person</option>
+  </select>
+  <div class="startup-div" style="display: none;">
+    {{ user_form.as_p}}
+    {{ startup_form.as_p}}
+    {{ address_form.as_p}}
+    <button type="submit">Sign up </button>
+  </div>
+  <script>
+    var select = document.querySelector("select");
+    var startupDiv = document.querySelector(".startup-div")
+    function updateForm() {
+      if(select.value == "startup") {
+        startupDiv.style.display = "block";
+      } else {
+        startupDiv.style.display = "none";
+      }
+    }
+  </script>
+{% endblock %}
