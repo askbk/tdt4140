@@ -12,14 +12,18 @@
       <ul class="element-list">
         <li> Phase: </li>
         {% for phase in phases %}
-        <input type="checkbox" class="filter-checkbox" name="{{ phase }}"/>
-        <li> {{ phase }} </li>
+        <li>
+          <input type="checkbox" class="filter-checkbox" id="{{ phase }}" name="{{ phase }}"/>
+          <label for="{{ phase }}"> {{ phase }} </label>
+        </li>
         {% endfor %}
         <br>
         <li> Tag: </li>
         {% for tag in tags %}
-        <input type="checkbox" class="filter-checkbox" name="{{ tag }}"/>
-        <li> {{ tag }} </li>
+        <li>
+          <input type="checkbox" class="filter-checkbox" id="{{ tag }}" name="{{ tag }}"/>
+          <label for="{{ tag }}"> {{ tag }} </label>
+        </li>
         {% endfor %}
       </ul>
     </div>

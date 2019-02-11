@@ -38,6 +38,9 @@ body {
   text-align: center;
   margin-top:4px;
 }
+.filter ul li input:hover, .filter ul li label:hover  {
+  cursor: pointer;
+}
 .filter div {
   padding: 5px;
   background-color: #555;
