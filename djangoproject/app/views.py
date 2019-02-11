@@ -75,3 +75,6 @@ def adverts(request):
 
 def investors(request):
     return render(request, "investors.html")
+
+def register_user(request):
+    return HttpResponseRedirect("/index")
