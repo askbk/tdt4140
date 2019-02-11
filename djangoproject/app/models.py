@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils import timezone
+from django.forms import ModelForm
+
 
 
 class Address(models.Model):
@@ -16,6 +18,11 @@ class Address(models.Model):
     class Meta:
         verbose_name = "Address"
         verbose_name_plural = "Addresses"
+
+class AddressForm(ModelForm):
+    class Meta:
+        model = Address
+        fields = ['postal_code', 'city', 'street_address']
 
 class Phase(models.Model):
     title = models.CharField(max_length=120)
@@ -38,6 +45,11 @@ class Startup(models.Model):
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
+
+class StartupForm(ModelForm):
+    class Meta:
+        model = Startup
+        fields =['bio', 'tags','employees']
 
 class Person(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
