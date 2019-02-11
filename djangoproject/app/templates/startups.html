@@ -29,7 +29,7 @@
     </div>
   </div>
   {% for startup in startups %}
-  <div onclick="location.href='{% url 'startup' startup.id %}';" class="element-container item{{startup.id}}">
+  <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="element-container item{{startup.id}}">
     <div class="element-image-container">
       <img src="../static/images/startup{{ startup.id }}.png" class="element-image"  alt="{{startup}} image can't load"/>
     </div>
