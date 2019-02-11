@@ -6,6 +6,28 @@
 
 {% block content %}
 <div class="grid-container">
+<div class="" id="output">
+    {% for startup in startups %}
+    <div onclick="location.href='{% url 'startup' startup.id %}';" class="element-container item{{startup.id}} startup-item" data-tags="{{ startup.tags.first }}">
+        <div class="element-image-container">
+            <img src="../static/images/startup{{ startup.id }}.png" class="element-image"  alt="{{startup}} image can't load"/>
+        </div>
+        <div>
+            <p class="element-title bold">{{ startup.user.first_name }}</p>
+            <ul class="element-list">
+                <li> Phase: {{ startup.phase }} </li>
+                <li> Tags: {{ startup.tags.first }}{% if startup.tags.all|length != 1 %},
+                    {{ startup.tags.last }}{% if startup.tags.all|length != 2 %}, ...
+                    {% endif %}
+                    {% endif  %}
+                </li>
+                <li> Employees: {{ startup.employees }} </li>
+                <li> Location: {{ startup.address.city }} </li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
   <div class="filter">
     <p class="bold element-title"> Filter </p>
     <div>
@@ -28,26 +50,10 @@
       </ul>
     </div>
   </div>
-  {% for startup in startups %}
-  <div onclick="location.href='{% url 'startup' startup.id %}';" class="element-container item{{startup.id}}">
-    <div class="element-image-container">
-      <img src="../static/images/startup{{ startup.id }}.png" class="element-image"  alt="{{startup}} image can't load"/>
-    </div>
-    <div>
-      <p class="element-title bold">{{ startup.user.first_name }}</p>
-      <ul class="element-list">
-        <li> Phase: {{ startup.phase }} </li>
-        <li> Tags: {{ startup.tags.first }}{% if startup.tags.all|length != 1 %},
-          {{ startup.tags.last }}{% if startup.tags.all|length != 2 %}, ...
-            {% endif %}
-          {% endif  %}
-         </li>
-        <li> Employees: {{ startup.employees }} </li>
-        <li> Location: {{ startup.address.city }} </li>
-      </ul>
-    </div>
-  </div>
-  {% endfor %}
 </div>
-<script src="/static/js/startup_filter.js" charset="utf-8"></script>
+
+<div id="startuplist" style="display:none;">
+
+</div>
+<script src="/static/js/startups.js" type="module" charset="utf-8"></script>
 {% endblock %}
