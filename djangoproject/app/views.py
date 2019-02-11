@@ -29,7 +29,7 @@ def profile(request, id):
         profile = Startup.objects.get(user_id=id)
 
     context = {
-        'user': request.user,
+        'profile_user': user,
         'profile': profile,
     }
     return render(request, 'profile.html', context)
