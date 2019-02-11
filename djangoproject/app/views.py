@@ -27,10 +27,11 @@ def profile(request, id):
     user = User.objects.get(id=id)
     if user.groups.filter(name='Startup').exists():
         profile = Startup.objects.get(user_id=id)
-
+    else:
+        profile = ""
     context = {
-        'profile_user': user,
-        'profile': profile,
+        'profile_user': user, #user objekt til den profilen du besøker
+        'profile': profile, #Startup/Investor/Person objekt
     }
     return render(request, 'profile.html', context)
 
