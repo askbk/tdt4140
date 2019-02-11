@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup
+from app.models import Advert, Startup, Tag, Phase
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 
@@ -57,8 +57,12 @@ def logout_user(request):
 
 def startups(request):
     startups = get_list_or_404(Startup)
+    phases = get_list_or_404(Phase)
+    tags = get_list_or_404(Tag)
     context = {
-        'startups': startups
+        'startups': startups,
+        'phases': phases,
+        'tags': tags,
     }
     return render(request, "startups.html", context)
 

@@ -6,7 +6,24 @@
 
 {% block content %}
 <div class="grid-container">
-  <div class="filter">Filter</div>
+  <div class="filter">
+    <p class="bold element-title"> Filter </p>
+    <div>
+      <ul class="element-list">
+        <li> Phase: </li>
+        {% for phase in phases %}
+        <input type="checkbox" class="filter-checkbox" name="{{ phase }}"/>
+        <li> {{ phase }} </li>
+        {% endfor %}
+        <br>
+        <li> Tag: </li>
+        {% for tag in tags %}
+        <input type="checkbox" class="filter-checkbox" name="{{ tag }}"/>
+        <li> {{ tag }} </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
   {% for startup in startups %}
   <div onclick="location.href='{% url 'startup' startup.id %}';" class="element-container item{{startup.id}}">
     <div class="element-image-container">

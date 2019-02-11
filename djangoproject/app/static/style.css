@@ -8,6 +8,7 @@ body {
   text-shadow: 1px 0px 0px #000;
   padding-right:1px;
   letter-spacing: 1px;
+
 }
 
 .grid-container {
@@ -20,7 +21,7 @@ body {
   grid-auto-rows: auto;
 }
 
-.grid-container div {
+.grid-container .element-container {
   background: #555;
   color: #DDD;
   padding: 0.5em;
@@ -29,8 +30,18 @@ body {
 .filter {
   align-self: start;
   grid-row: 1/5;
+  background-color: #444;
+  color: #DDD;
+  padding: 5px;
 }
-
+.filter .bold {
+  text-align: center;
+  margin-top:4px;
+}
+.filter div {
+  padding: 5px;
+  background-color: #555;
+}
 .element-title {
   margin: 0;
 }
@@ -92,4 +103,8 @@ input[type=text], input[type=password], textarea, select {
 textarea {
 	height:180px;
 	width: 99%;
+}
+.filter-checkbox {
+  white-space: nowrap;
+  float: left;
 }
