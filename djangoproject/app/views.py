@@ -1,18 +1,14 @@
-from django.shortcuts import get_object_or_404, get_list_or_404, render
+from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from app.models import Advert, Startup, Tag, Phase
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import UserCreationForm
 
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
-    all_adverts = get_list_or_404(Advert)
-    context = {
-        'all_adverts': all_adverts
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 def advert(request, id): #Se urls.py for å se når denne aktiveres
     advert = get_object_or_404(Advert, id=id)
@@ -77,4 +73,15 @@ def investors(request):
     return render(request, "investors.html")
 
 def register_user(request):
-    return HttpResponseRedirect("/index")
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            auth_login(request, user)
+            return HttpResponseRedirect("/index")
+    else:
+        form = UserCreationForm()
+    return render(request, 'register_user.html', {'form': form})
