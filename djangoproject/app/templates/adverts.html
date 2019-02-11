@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %} Adverts | Momentum {% endblock %}
+
+{% block content %}
+
+<div class="grid-container">
+  <div class="filter">Filter</div>
+  {% for advert in adverts %}
+  <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}}">
+    <div class="element-image-container">
+      <img src="../static/images/startup{{ advert.startup.id }}.png" class="element-image"  alt="{{adverts.startup}} image can't load"/>
+    </div>
+    <div>
+      <p class="element-title bold">{{ advert.title }}</p>
+      <ul class="element-list">
+        <li> Startup: {{ advert.startup }} </li>
+        <li> Location: {{ advert.startup.address.city }}</li>
+        <li> Deadline: {{ advert.deadline }} </li>
+        <li> {{ advert.available_positions }} available positions</li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

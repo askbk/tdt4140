@@ -1,6 +1,9 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render
-from django.http import HttpResponse, Http404
-from app.models import Advert
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from app.models import Advert, Startup
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.models import User
+
 
 #get_list_or_404() henter liste vha filter
 
@@ -18,7 +21,53 @@ def advert(request, id): #Se urls.py for å se når denne aktiveres
     }
     return render(request, 'advert.html', context) #sender besøkende til html-dokumentet
 
+def startup(request, id):
+    startup = get_object_or_404(Startup, id=id)
+    context = {
+        'startup': startup
+    }
+    return render(request, 'startup.html', context)
+
 def login(request):
-    if user.is_authenticated:
-        return render(request, 'profile.html', context)
-    return render(request, 'login.html', context)
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/profile/'+str(request.user.id))
+    return render(request, 'login.html')
+
+def profile(request, id):
+    context = {
+        'user': request.user
+    }
+    return render(request, 'profile.html', context)
+
+
+def login_user(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        auth_login(request, user)
+        return HttpResponseRedirect('/profile/'+str(user.id)+"/")
+    return render(request, "login.html", {'wrongdetails': 1})
+
+def logout_user(request):
+    auth_logout(request)
+    return HttpResponseRedirect('../login')
+
+
+def startups(request):
+    startups = get_list_or_404(Startup)
+    context = {
+        'startups': startups
+    }
+    return render(request, "startups.html", context)
+
+def adverts(request):
+    adverts = get_list_or_404(Advert)
+    context = {
+        'adverts': adverts
+    }
+    return render(request, "adverts.html", context)
+
+def investors(request):
+    return render(request, "investors.html")

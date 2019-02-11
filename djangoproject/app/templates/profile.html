@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %} {{ user.username }} | Momentum {% endblock %}
+
+{% block content %}
+
+<button class="standard-button" onclick="location.href='{% url 'logout_user' %}';"> Logout</button>
+
+{% endblock %}

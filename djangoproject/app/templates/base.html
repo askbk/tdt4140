@@ -6,20 +6,24 @@
     <title> {% block title %} Momentum {% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Playfair+Display|Overpass" rel="stylesheet">
     {% block extra-stylesheets %}
     {% endblock %}
   </head>
   <body>
     {% block header %}
     <header>
-      <div class="logo"> MOMENTUM </div>
+      <div class="logo" onclick="location.href='{% url 'index' %}';"> MOMENTUM </div>
       <div class="link-container">
-        <div class="nav-link"><span>Startups</span></div>
-        <div class="nav-link"><span>Adverts</span></div>
-        <div class="nav-link"><span>Investors</span></div>
+        <div class="nav-link" onclick="location.href='{% url 'startups' %}';"><span>Startups</span></div>
+        <div class="nav-link" onclick="location.href='{% url 'adverts' %}';"><span>Adverts</span></div>
+        <div class="nav-link" onclick="location.href='{% url 'investors' %}';"><span>Investors</span></div>
       </div>
-      <div class="nav-profile"> PROFILE </div>
+      {% if user.username != "" %}
+      <div class="nav-profile" onclick="location.href='{% url 'profile' user.id %}';"> {{ user.username }} </div>
+      {% else %}
+      <div class="nav-profile" onclick="location.href='{% url 'login' %}';"> LOGIN </div>
+      {% endif %}
     </header>
     {% endblock %}
     <div class="content">

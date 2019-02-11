@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import Address, Startup, Person, Investor, Advert
+from .models import Address, Phase, Tag, Startup, Person, Investor, Advert
 
 # Register your models here.
 admin.site.register(Address)
+admin.site.register(Phase)
+admin.site.register(Tag)
+
 admin.site.register(Startup)
 admin.site.register(Person)
 admin.site.register(Investor)
