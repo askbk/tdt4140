@@ -10,7 +10,7 @@
     {% for startup in startups %}
     <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="element-container item{{startup.id}} startup-item" data-tags="{{ startup.tags.first }}">
         <div class="element-image-container">
-            <img src="{% static startup.image.url %}" class="element-image"  alt="{{startup}} image can't load"/>
+            <img src="..{% static startup.image.url %}" class="element-image"  alt="{{startup}} image can't load"/>
         </div>
         <div>
             <p class="element-title bold">{{ startup.user.first_name }}</p>

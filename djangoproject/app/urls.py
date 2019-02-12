@@ -18,6 +18,4 @@ urlpatterns = [
     path('register_startup/', views.register_startup, name="register_startup"),
     path('register_person/', views.register_person, name="register_person"),
     path('register_investor/', views.register_investor, name="register_investor"),
-
-
 ]

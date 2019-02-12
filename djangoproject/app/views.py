@@ -41,6 +41,7 @@ def register_startup(request):
             address_form.save()
             temp = startup_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
+            print(temp.image.url)
             Group.objects.get(name='Startup').user_set.add(temp.user)
             temp.address = Address.objects.all().order_by("-id")[0]
             temp.save()
