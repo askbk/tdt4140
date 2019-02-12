@@ -29,7 +29,7 @@ def register(request):
 def register_startup(request):
     user_form = RegisterForm(request.POST)
     address_form = AddressForm(request.POST)
-    startup_form = StartupForm(request.POST)
+    startup_form = StartupForm(request.POST, request.FILES)
     context = {
         'user_form': user_form,
         'address_form': address_form,
@@ -39,11 +39,12 @@ def register_startup(request):
         if user_form.is_valid() and startup_form.is_valid() and address_form.is_valid():
             user_form.save()
             address_form.save()
-            a = startup_form.save(commit=False)
-            a.user = User.objects.latest('date_joined')
-            Group.objects.get(name='Startup').user_set.add(a.user)
-            a.address = Address.objects.all().order_by("-id")[0]
-            a.save()
+            temp = startup_form.save(commit=False)
+            temp.user = User.objects.latest('date_joined')
+            Group.objects.get(name='Startup').user_set.add(temp.user)
+            temp.address = Address.objects.all().order_by("-id")[0]
+            temp.save()
+            startup_form.save_m2m()
             return HttpResponseRedirect("/index/")
     return render(request, 'register_startup.html', context)
 
@@ -58,7 +59,8 @@ def profile(request, id):
     user = User.objects.get(id=id)
     if user.groups.filter(name='Startup').exists():
         profile = Startup.objects.get(user_id=id)
-
+    else:
+        profile = ""
     context = {
         'user': request.user,
         'profile': profile,

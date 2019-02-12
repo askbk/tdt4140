@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Address, Startup
+from app.models import Address, Startup, Tag
 from django.forms import ModelForm
 
 
@@ -11,9 +11,18 @@ class AddressForm(ModelForm):
                 fields = ['postal_code', 'city', 'street_address']
 
 class StartupForm(ModelForm):
+        # Liste til tags hentes fra databasen
+        # tag_list = list(Tag.objects.all())
+        # mapped_tag_list = list(map(lambda a: a.title, tag_list))
+        # duplicated_mapped_tag_list = [val for val in mapped_tag_list for _ in (0, 1)]
+        # it = iter(duplicated_mapped_tag_list)
+        # complete_tag_list = tuple(zip(it, it))
+        # liste med tags ferdig
+        # tags = forms.MultipleChoiceField(choices=complete_tag_list, widget=forms.CheckboxSelectMultiple())
         class Meta:
                 model = Startup
-                fields = ['bio', 'tags', 'phase', 'employees','user', 'image']
+                fields = ['bio', 'phase', 'tags', 'employees','user', 'image']
+                widgets = {'tags': forms.CheckboxSelectMultiple()}
                 exclude = ('user','address')
 
 class RegisterForm(UserCreationForm):
@@ -22,7 +31,7 @@ class RegisterForm(UserCreationForm):
 
         class Meta:
                 model = User
-                fields = ('username', 'fullname', 'email','password1', 'password2')
+                fields = ('username', 'password1', 'password2', 'fullname', 'email')
 
         def save(self, commit=True):
                 user = super(RegisterForm, self).save(commit=False)
