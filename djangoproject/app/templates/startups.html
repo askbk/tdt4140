@@ -6,7 +6,6 @@
 
 {% block content %}
 <div class="grid-container">
-<div class="" id="output">
     {% for startup in startups %}
     <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="element-container item{{startup.id}} startup-item" data-tags="{{ startup.tags.first }}">
         <div class="element-image-container">
@@ -27,7 +26,6 @@
         </div>
     </div>
     {% endfor %}
-</div>
   <div class="filter">
     <p class="bold element-title"> Filter </p>
     <div>
