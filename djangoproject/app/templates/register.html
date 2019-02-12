@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% load static%}
+
+{% block title %} Register | Momentum {% endblock %}
+{% block heading %} Choose your Account {% endblock %}
+{% block extra-stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'register.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="circle-container">
+    <div onclick="location.href='{% url 'register_startup' %}';" class="circle bold button-hover"><span>Startup</span></div>
+    <div onclick="location.href='{% url 'register_person' %}';" class="circle bold button-hover"><span>Person</span></div>
+    <div onclick="location.href='{% url 'register_investor' %}';" class="circle bold button-hover"><span>Investor</span></div>
+    <div  onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</div>
+  </div>
+{% endblock %}

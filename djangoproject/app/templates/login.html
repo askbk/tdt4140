@@ -3,10 +3,12 @@
 {% load static %}
 
 {% block title %} Login | Momentum {% endblock %}
+{% block heading %} Log in to Your Account {% endblock %}
 
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 {% endblock %}
+
 
 {% block content %}
 <form action="/login_user/" method="post">
@@ -14,5 +16,6 @@
     <input class="username-input" type="text" name="username"  placeholder="Username">
     <input class="password-input" type="password" name="password" placeholder="Password">
     <button type="submit" class="standard-button login-button">Login</button>
+		<button onclick="location.href='{% url 'register' %}'" type="button" class="standard-button login-button">Register </button>
 </form>
 {% endblock %}

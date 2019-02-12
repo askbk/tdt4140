@@ -1,8 +1,16 @@
 body {
-  background: white url("images/background.jpg") no-repeat;
+  background: white url("media/images/background.jpg") repeat;
   margin: 0;
   font-family: Overpass, Arial;
 }
+
+.mt-2 {
+  text-align: center;
+}
+.logo-font {
+  font-family: 'anuratiregular', 'Abel', Arial;
+}
+
 .bold {
   font-weight: bold;
   text-shadow: 1px 0px 0px #000;
@@ -21,17 +29,23 @@ body {
   grid-auto-rows: auto;
 }
 
+@media screen and (max-width: 800px) {
+  .grid-container {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
 .grid-container .element-container {
-  background: #555;
-  color: #DDD;
+  background: rgba(85,85,85,0.8);
+  color: #EEE;
   padding: 0.5em;
 }
 
 .filter {
   align-self: start;
   grid-row: 1/5;
-  background-color: #444;
-  color: #DDD;
+  background-color: rgba(85,85,85,0.8);
+  color: #EEE;
   padding: 5px;
 }
 .filter .bold {
@@ -43,7 +57,7 @@ body {
 }
 .filter div {
   padding: 5px;
-  background-color: #555;
+  background-color: rgba(85,85,85,0.8);
 }
 .element-title {
   margin: 0;
@@ -51,7 +65,12 @@ body {
 
 .element-container:hover {
   cursor:pointer;
-  background: #444;
+  background: rgba(25,25,25,0.8);
+}
+
+.button-hover:hover {
+  cursor:pointer;
+  background: rgba(25,25,25,0.8);
 }
 
 .element-list {
@@ -69,15 +88,16 @@ body {
 }
 
 .standard-button, .red-button {
-  color: #373737;
-  background-color: #C0C0C0;
+  color: #EEE;
+  background-color:  rgba(0, 0, 0, 0.8);
   text-align: center;
   font-weight: bold;
   border: 1px solid darkgrey;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
-  height:40px;
+  width: 100px;
   font-size: 16px;
-  margin-top: 10px;
+  height:33px;
+  margin: 10px auto;
   margin-bottom: 10px;
   border-radius: 3px;
 }
@@ -94,20 +114,6 @@ body {
 	background-color:#EEE;
 }
 
-input[type=text], input[type=password], textarea, select {
-  height:30px;
-  display:block;
-  width:200px;
-  text-align:center;
-  font-size: 16px;
-  border: 1px solid darkgrey;
-  border-radius: 3px;
-}
-textarea {
-	height:180px;
-	width: 99%;
-}
 .filter-checkbox {
   white-space: nowrap;
-  float: left;
 }

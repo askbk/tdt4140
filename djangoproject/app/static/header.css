@@ -4,6 +4,8 @@
     src: url('fonts/anurati-regular-webfont.woff2') format('woff2'),
          url('fonts/anurati-regular-webfont.woff') format('woff');
 }
+
+/*
 header {
   background-color: #333333;
   height: 50px;
@@ -59,4 +61,34 @@ header {
 }
 .nav-profile:hover {
   cursor: pointer;
+}
+*/
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a.logo {background-color: #444;}
+
+ul.topnav li a:hover {background-color: #111;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 500px) {
+  ul.topnav li.right,
+  ul.topnav li {float: none;}
 }

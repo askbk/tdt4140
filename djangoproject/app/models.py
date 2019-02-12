@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils import timezone
+from django.forms import ModelForm
+
 
 
 class Address(models.Model):
@@ -17,6 +19,7 @@ class Address(models.Model):
         verbose_name = "Address"
         verbose_name_plural = "Addresses"
 
+
 class Phase(models.Model):
     title = models.CharField(max_length=120)
     def __str__(self):
@@ -30,10 +33,11 @@ class Tag(models.Model):
 class Startup(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    address = models.ForeignKey(Address, default=1, on_delete=models.CASCADE)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE)
     employees = models.IntegerField()
     phase = models.ForeignKey(Phase, blank=True, default=1, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
+    image = models.ImageField(upload_to='images/', default='no-image.png')
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name

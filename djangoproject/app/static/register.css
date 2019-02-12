@@ -1,0 +1,17 @@
+.circle-container {
+  width: 600px;
+  height: 200px;
+  margin: auto;
+}
+
+.circle {
+  display: inline-block;
+  text-align: center;
+  font-size:25px;
+  line-height:196px;
+  width:196px;
+  height:196px;
+  background: #555;
+  color: #DDD;
+  border-radius: 100%;
+}

@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block title %} {{ user.username }} | Momentum {% endblock %}
+{% block heading %} {{ user.username }} {% endblock %}
 
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">

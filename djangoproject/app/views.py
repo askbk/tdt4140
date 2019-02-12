@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup, Tag, Phase
+from app.models import Advert, Startup, Tag, Phase, Address
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-
+from app.forms import StartupForm, AddressForm, RegisterForm
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
@@ -22,6 +22,39 @@ def login(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('/profile/'+str(request.user.id))
     return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
+
+def register_startup(request):
+    user_form = RegisterForm(request.POST)
+    address_form = AddressForm(request.POST)
+    startup_form = StartupForm(request.POST, request.FILES)
+    context = {
+        'user_form': user_form,
+        'address_form': address_form,
+        'startup_form': startup_form,
+    }
+    if request.method == 'POST':
+        if user_form.is_valid() and startup_form.is_valid() and address_form.is_valid():
+            user_form.save()
+            address_form.save()
+            temp = startup_form.save(commit=False)
+            temp.user = User.objects.latest('date_joined')
+            print(temp.image.url)
+            Group.objects.get(name='Startup').user_set.add(temp.user)
+            temp.address = Address.objects.all().order_by("-id")[0]
+            temp.save()
+            startup_form.save_m2m()
+            return HttpResponseRedirect("/index/")
+    return render(request, 'register_startup.html', context)
+
+def register_person(request):
+    return render(request, 'index.html')
+
+def register_investor(request):
+    return render(request, 'index.html')
+
 
 def profile(request, id):
     user = User.objects.get(id=id)
@@ -72,6 +105,19 @@ def adverts(request):
 def investors(request):
     return render(request, "investors.html")
 
+
+'''
+def register_startup(request):
+    user_form = UserCreationForm(request.POST)
+    startup_form = StartupForm()
+    address_form = AddressForm()
+    context = {
+        'user_form': user_form,
+        'startup_form': startup_form,
+        'address_form': address_form,
+    }
+    return render(request,'register_startup.html', context)
+
 def register_user(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -83,5 +129,7 @@ def register_user(request):
             auth_login(request, user)
             return HttpResponseRedirect("/index")
     else:
-        form = UserCreationForm()
-    return render(request, 'register_user.html', {'form': form})
+        #form = UserCreationForm()
+        form = SignUpForm()
+    return render(request, 'register_startup.html', {'form': form})
+'''
