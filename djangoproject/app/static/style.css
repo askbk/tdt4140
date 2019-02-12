@@ -1,9 +1,12 @@
 body {
-  background: white url("media/images/background.jpg") no-repeat;
+  background: white url("media/images/background.jpg") repeat;
   margin: 0;
   font-family: Overpass, Arial;
 }
 
+.mt-2 {
+  text-align: center;
+}
 .logo-font {
   font-family: 'anuratiregular', 'Abel', Arial;
 }
@@ -85,17 +88,15 @@ body {
 }
 
 .standard-button, .red-button {
-  color: #373737;
-  background-color: #C0C0C0;
+  color: #EEE;
+  background-color:  rgba(0, 0, 0, 0.8);
   text-align: center;
   font-weight: bold;
   border: 1px solid darkgrey;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
   width: 100px;
   font-size: 16px;
-  padding-top:10px;
-  margin-top: 10px;
-  height:26px;
+  height:33px;
   margin: 10px auto;
   margin-bottom: 10px;
   border-radius: 3px;

@@ -1,12 +1,7 @@
 .circle-container {
   width: 600px;
   height: 200px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  margin: 0;
-
+  margin: auto;
 }
 
 .circle {
@@ -19,10 +14,4 @@
   background: #555;
   color: #DDD;
   border-radius: 100%;
-}
-
-.circle span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
 }

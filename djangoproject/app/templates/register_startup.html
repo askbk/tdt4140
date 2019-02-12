@@ -1,14 +1,18 @@
 <!doctype HTML>
 
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 
 <form method="post" enctype="multipart/form-data">
+
+
   {% csrf_token %}
-  {{ user_form }}
-  {{ address_form }}
-  {{ startup_form }}
-  <button type="submit"> Submit </button>
+  {{ user_form|crispy }}
+  {{ address_form|crispy }}
+  {{ startup_form|crispy }}
+  <button class="standard-button" type="submit"> Submit </button>
 </form>
 {% endblock %}
