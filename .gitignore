@@ -144,3 +144,10 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+
+*.log
+*.pot
+*.pyc
+*/*/*/__pycache__/
+*/*/__pycache__/
+*/__pycache__/
