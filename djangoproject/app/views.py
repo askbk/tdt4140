@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404, render, redirec
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from app.models import Advert, Startup, Tag, Phase, Address
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 from app.forms import StartupForm, AddressForm, RegisterForm
 #get_list_or_404() henter liste vha filter
@@ -41,6 +41,7 @@ def register_startup(request):
             address_form.save()
             a = startup_form.save(commit=False)
             a.user = User.objects.latest('date_joined')
+            Group.objects.get(name='Startup').user_set.add(a.user)
             a.address = Address.objects.all().order_by("-id")[0]
             a.save()
             return HttpResponseRedirect("/index/")
