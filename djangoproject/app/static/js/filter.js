@@ -1,8 +1,7 @@
 export class Filter {
-    constructor(itemSelector, outputSelector) {
+    constructor(itemSelector) {
         this.filterCheckboxes = document.getElementsByClassName("filter-checkbox");
         this.items = document.getElementsByClassName(itemSelector);
-        this.output = document.getElementById(outputSelector);
         this.filters = new Set();
 
         for (let i = 0, len = this.filterCheckboxes.length; i < len; i++) {
