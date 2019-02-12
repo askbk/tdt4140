@@ -4,7 +4,7 @@ from app.models import Advert, Startup, Tag, Phase, Address
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from app.forms import StartupForm, AddressForm
+from app.forms import StartupForm, AddressForm, RegisterForm
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
@@ -27,7 +27,7 @@ def register(request):
     return render(request, 'register.html')
 
 def register_startup(request):
-    user_form = UserCreationForm(request.POST)
+    user_form = RegisterForm(request.POST)
     address_form = AddressForm(request.POST)
     startup_form = StartupForm(request.POST)
     context = {
