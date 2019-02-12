@@ -33,16 +33,16 @@ body {
 }
 
 .grid-container .element-container {
-  background: #555;
-  color: #DDD;
+  background: rgba(85,85,85,0.8);
+  color: #EEE;
   padding: 0.5em;
 }
 
 .filter {
   align-self: start;
   grid-row: 1/5;
-  background-color: #444;
-  color: #DDD;
+  background-color: rgba(85,85,85,0.8);
+  color: #EEE;
   padding: 5px;
 }
 .filter .bold {
@@ -54,7 +54,7 @@ body {
 }
 .filter div {
   padding: 5px;
-  background-color: #555;
+  background-color: rgba(85,85,85,0.8);
 }
 .element-title {
   margin: 0;
@@ -62,12 +62,12 @@ body {
 
 .element-container:hover {
   cursor:pointer;
-  background: #444;
+  background: rgba(25,25,25,0.8);
 }
 
 .button-hover:hover {
   cursor:pointer;
-  background: #444;
+  background: rgba(25,25,25,0.8);
 }
 
 .element-list {
