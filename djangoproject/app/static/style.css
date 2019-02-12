@@ -3,6 +3,11 @@ body {
   margin: 0;
   font-family: Overpass, Arial;
 }
+
+.logo-font {
+  font-family: 'anuratiregular', 'Abel', Arial;
+}
+
 .bold {
   font-weight: bold;
   text-shadow: 1px 0px 0px #000;
@@ -19,6 +24,12 @@ body {
   grid-gap: 1em;
   /*grid-auto-rows: minmax(75px, auto);*/
   grid-auto-rows: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .grid-container {
+    grid-template-columns: 1fr 2fr;
+  }
 }
 
 .grid-container .element-container {

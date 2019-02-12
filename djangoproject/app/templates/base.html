@@ -3,32 +3,32 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
     <title> {% block title %} Momentum {% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Abel|Playfair+Display|Overpass" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     {% block extra-stylesheets %}
     {% endblock %}
   </head>
   <body>
     {% block header %}
-    <header>
-      <div class="logo" onclick="location.href='{% url 'index' %}';"> MOMENTUM </div>
-      <div class="link-container">
-        <div class="nav-link" onclick="location.href='{% url 'startups' %}';"><span>Startups</span></div>
-        <div class="nav-link" onclick="location.href='{% url 'adverts' %}';"><span>Adverts</span></div>
-        <div class="nav-link" onclick="location.href='{% url 'investors' %}';"><span>Investors</span></div>
-      </div>
+    <ul class="topnav">
+      <li><a class="logo logo-font" href="{% url 'index' %}">MOMENTUM</a></li>
+      <li><a href="{% url 'startups' %}">Startups</a></li>
+      <li><a href="{% url 'adverts' %}">Adverts</a></li>
+      <li><a href="{% url 'investors' %}">Investors</a></li>
       {% if user.username != "" %}
-      <div class="nav-profile" onclick="location.href='{% url 'profile' user.id %}';"> {{ user.username }} </div>
+        <li class="right" ><a href="{% url 'profile' user.id %}"> {{ user.username }} </a></li>
       {% else %}
-      <div class="nav-profile" onclick="location.href='{% url 'login' %}';"> LOGIN </div>
+        <li class="right" ><a href="{% url 'login' %}">LOGIN</a></li>
       {% endif %}
-    </header>
+    </ul>
     {% endblock %}
-    <div class="content">
+
     {% block content %}
     {% endblock %}
-    </div>
   </body>
 </html>
