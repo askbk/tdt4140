@@ -36,12 +36,14 @@ body {
 }
 
 .grid-container .element-container {
-  background: rgba(85,85,85,0.8);
-  color: #EEE;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 6px;
+  color: #222;
   padding: 0.5em;
 }
 
 .filter {
+  border-radius: 6px;
   align-self: start;
   grid-row: 1/5;
   background-color: rgba(85,85,85,0.8);
@@ -65,7 +67,7 @@ body {
 
 .element-container:hover {
   cursor:pointer;
-  background: rgba(25,25,25,0.8);
+  background: rgba(150,150,150,0.8);
 }
 
 .button-hover:hover {
@@ -83,8 +85,8 @@ body {
 }
 
 .element-image {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 
 .standard-button, .red-button {
