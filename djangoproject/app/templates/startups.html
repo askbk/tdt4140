@@ -8,7 +8,7 @@
 {% block content %}
 <div class="grid-container">
     {% for startup in startups %}
-    <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="element-container item{{startup.id}} startup-item" data-tags="{{ startup.tags.first }}">
+    <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="element-container item{{startup.id}} startup-item" data-tags="{{ startup.tagslist }} {{ startup.phase }}">
         <div class="element-image-container">
             <img src="..{% static startup.image.url %}" class="element-image"  alt="{{startup}} image can't load"/>
         </div>
@@ -34,7 +34,7 @@
         <li> Phase: </li>
         {% for phase in phases %}
         <li>
-          <input type="checkbox" class="filter-checkbox" id="{{ phase }}" name="{{ phase }}"/>
+          <input type="checkbox" class="filter-checkbox-phase" id="{{ phase }}" name="{{ phase }}"/>
           <label for="{{ phase }}"> {{ phase }} </label>
         </li>
         {% endfor %}
@@ -42,7 +42,7 @@
         <li> Tag: </li>
         {% for tag in tags %}
         <li>
-          <input type="checkbox" class="filter-checkbox" id="{{ tag }}" name="{{ tag }}"/>
+          <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
           <label for="{{ tag }}"> {{ tag }} </label>
         </li>
         {% endfor %}
