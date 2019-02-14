@@ -41,7 +41,6 @@ def register_startup(request):
             address_form.save()
             temp = startup_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
-            print(temp.image.url)
             Group.objects.get(name='Startup').user_set.add(temp.user)
             temp.address = Address.objects.all().order_by("-id")[0]
             temp.save()
@@ -110,32 +109,3 @@ def adverts(request):
 
 def investors(request):
     return render(request, "investors.html")
-
-
-'''
-def register_startup(request):
-    user_form = UserCreationForm(request.POST)
-    startup_form = StartupForm()
-    address_form = AddressForm()
-    context = {
-        'user_form': user_form,
-        'startup_form': startup_form,
-        'address_form': address_form,
-    }
-    return render(request,'register_startup.html', context)
-
-def register_user(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            auth_login(request, user)
-            return HttpResponseRedirect("/index")
-    else:
-        #form = UserCreationForm()
-        form = SignUpForm()
-    return render(request, 'register_startup.html', {'form': form})
-'''
