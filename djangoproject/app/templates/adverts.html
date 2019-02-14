@@ -8,7 +8,6 @@
 {% block content %}
 
 <div class="grid-container">
-  <div class="filter">Filter</div>
   {% for advert in adverts %}
   <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}}">
     <div class="element-image-container">
@@ -25,5 +24,19 @@
     </div>
   </div>
   {% endfor %}
+  <div class="filter">
+    <p class="bold element-title"> Filter </p>
+    <div>
+      <ul class="element-list">
+        <li> City: </li>
+        {% for city in cities %}
+        <li>
+          <input type="checkbox" class="filter-checkbox-phase" id="{{ city }}" name="{{ city }}"/>
+          <label for="{{ city }}"> {{ city }} </label>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}
