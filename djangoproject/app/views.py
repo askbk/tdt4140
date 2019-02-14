@@ -41,7 +41,7 @@ def register_startup(request):
             address_form.save()
             temp = startup_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
-            print(temp.image.url)
+            #print(temp.image.url)
             Group.objects.get(name='Startup').user_set.add(temp.user)
             temp.address = Address.objects.all().order_by("-id")[0]
             temp.save()
@@ -50,6 +50,24 @@ def register_startup(request):
     return render(request, 'register_startup.html', context)
 
 def register_person(request):
+    user_form = RegisterForm(request.POST)
+    person_form = PersonForm(request.POST)
+    context = {
+        'user_form': user_form,
+        'person_form': person_form,
+    }
+    if request.method == 'POST':
+        if user_form.is_valid() and address_form.is_valid():
+            user_form.save()
+            person_form.save()
+            temp.user = User.objects.latest('date_joined')
+            Group.objects.get(name='Startup').user_set.add(temp.user)
+            temp.address = Address.objects.all().order_by("id")[0]
+            temp.save()
+            return HttpResponseRedirect("/index/")
+        return render(request, 'register_person.html',context)
+
+
     return render(request, 'index.html')
 
 def register_investor(request):
@@ -110,32 +128,3 @@ def adverts(request):
 
 def investors(request):
     return render(request, "investors.html")
-
-
-'''
-def register_startup(request):
-    user_form = UserCreationForm(request.POST)
-    startup_form = StartupForm()
-    address_form = AddressForm()
-    context = {
-        'user_form': user_form,
-        'startup_form': startup_form,
-        'address_form': address_form,
-    }
-    return render(request,'register_startup.html', context)
-
-def register_user(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            auth_login(request, user)
-            return HttpResponseRedirect("/index")
-    else:
-        #form = UserCreationForm()
-        form = SignUpForm()
-    return render(request, 'register_startup.html', {'form': form})
-'''
