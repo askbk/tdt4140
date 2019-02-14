@@ -86,8 +86,14 @@ def logout_user(request):
 
 def startups(request):
     startups = get_list_or_404(Startup)
+    tags = list(get_list_or_404(Tag))
+
+    for startup in startups:
+        s_tags = list(startup.tags.all())
+        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        startup.tagslist = tagslist
+
     phases = get_list_or_404(Phase)
-    tags = get_list_or_404(Tag)
     context = {
         'startups': startups,
         'phases': phases,
