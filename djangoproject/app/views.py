@@ -4,7 +4,7 @@ from app.models import Advert, Startup, Tag, Phase, Address
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-from app.forms import StartupForm, AddressForm, RegisterForm
+from app.forms import StartupForm, AddressForm, RegisterForm, PersonForm
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
@@ -51,24 +51,27 @@ def register_startup(request):
 
 def register_person(request):
     user_form = RegisterForm(request.POST)
-    person_form = PersonForm(request.POST)
+    address_form = AddressForm(request.POST)
+    person_form = PersonForm(request.POST,request.FILES)
     context = {
         'user_form': user_form,
+        'address_form': address_form,
         'person_form': person_form,
+
     }
     if request.method == 'POST':
-        if user_form.is_valid() and address_form.is_valid():
+        if user_form.is_valid() and address_form.is_valid() and person_form.is_valid():
             user_form.save()
-            person_form.save()
+            address_form.save()
+            temp = person_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
-            Group.objects.get(name='Startup').user_set.add(temp.user)
+            Group.objects.get(name='Person').user_set.add(temp.user)
             temp.address = Address.objects.all().order_by("id")[0]
             temp.save()
+            person_form.save_m2m()
             return HttpResponseRedirect("/index/")
-        return render(request, 'register_person.html',context)
+    return render(request, 'register_person.html',context)
 
-
-    return render(request, 'index.html')
 
 def register_investor(request):
     return render(request, 'index.html')

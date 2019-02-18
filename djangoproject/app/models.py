@@ -45,6 +45,7 @@ class Startup(models.Model):
 class Person(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
