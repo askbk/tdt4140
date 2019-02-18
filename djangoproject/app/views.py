@@ -66,9 +66,9 @@ def register_person(request):
             temp = person_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
             Group.objects.get(name='Person').user_set.add(temp.user)
-            temp.address = Address.objects.all().order_by("id")[0]
+            temp.address = Address.objects.all().order_by("-id")[0]
             temp.save()
-            person_form.save_m2m()
+            #person_form.save_m2m()
             return HttpResponseRedirect("/index/")
     return render(request, 'register_person.html',context)
 
