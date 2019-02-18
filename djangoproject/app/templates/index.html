@@ -2,8 +2,20 @@
 
 {% extends "base.html" %}
 
-{% block title %} Index | Momentum {% endblock %}
-{% block heading %} Momentum Front Page {% endblock %}
+{% block title %} Welcome | Momentum {% endblock %}
+{% block heading %} Welcome to Momentum {% endblock %}
 
 {% block content %}
+<div class="grid-container">
+  <div class="filter">Filter</div>
+  {% for content in contents %}
+  <div onclick="location.href='{% url 'content' content.id %}';" class="element-container">
+    <div>
+      <p class="element-title bold">{{ content.title }}</p>
+      <p>{{ content.type }} <br>
+        {{ content.text|slice:":150" }}... </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

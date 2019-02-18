@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup, Tag, Phase, Address
+from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
@@ -8,7 +8,21 @@ from app.forms import StartupForm, AddressForm, RegisterForm
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
-    return render(request, 'index.html')
+    contents = get_list_or_404(Content)
+    types = get_list_or_404(ContentType)
+
+    context = {
+    'contents': contents,
+    'types': types,
+    }
+    return render(request, 'index.html', context)
+
+def content(request, id):
+    content = get_object_or_404(Content, id=id)
+    context = {
+        'content': content
+    }
+    return render(request, 'content.html', context)
 
 def advert(request, id): #Se urls.py for å se når denne aktiveres
     advert = get_object_or_404(Advert, id=id)

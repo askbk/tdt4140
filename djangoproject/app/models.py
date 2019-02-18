@@ -44,14 +44,14 @@ class Startup(models.Model):
 
 class Person(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
 
 class Investor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
@@ -68,3 +68,19 @@ class Advert(models.Model):
 
     def almost_deadline(self): #returnerer true dersom vi det er 3 eller mindre dager til deadline
         self.deadline <= timezone.now() + datetime.timedelta(days=3)
+
+class ContentType(models.Model):
+    title = models.CharField(max_length=120)
+    def __str__(self):
+        return self.title;
+
+class Content(models.Model):
+    title = models.CharField(max_length=120)
+    type = models.ForeignKey(ContentType, default=1, on_delete=models.CASCADE)
+    text = models.TextField(max_length=1500, blank=True, null=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    released = models.DateTimeField(auto_now=True)
+    event_datetime = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return str(self.type) + ": " + self.title;

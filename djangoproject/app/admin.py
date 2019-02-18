@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Address, Phase, Tag, Startup, Person, Investor, Advert
+from .models import Address, Phase, Tag, Startup, Person, Investor, Advert, Content
 
 # Register your models here.
 admin.site.register(Address)
@@ -10,3 +10,4 @@ admin.site.register(Startup)
 admin.site.register(Person)
 admin.site.register(Investor)
 admin.site.register(Advert)
+admin.site.register(Content)
