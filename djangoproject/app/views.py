@@ -4,7 +4,8 @@ from app.models import Advert, Startup, Tag, Phase, Address
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-from app.forms import StartupForm, AddressForm, RegisterForm
+from app.forms import StartupForm, AddressForm, RegisterForm, AdvertForm
+from django.contrib.auth.decorators import login_required
 #get_list_or_404() henter liste vha filter
 
 def index(request):  #Se urls.py for å se når denne aktiveres
@@ -118,6 +119,18 @@ def adverts(request):
         'tags': tags,
     }
     return render(request, "adverts.html", context)
+
+@login_required(login_url='/login/')
+def new_advert(request):
+    advert_form = AdvertForm(request.POST)
+    context = {
+        'advert_form': advert_form,
+    }
+    if request.method == 'POST':
+        if advert_form.is_valid():
+            advert_form.save()
+            return HttpResponseRedirect("/startups/")
+    return render(request, 'new_advert.html', context)
 
 def investors(request):
     return render(request, "investors.html")
