@@ -41,5 +41,10 @@ class AdvertForm(ModelForm):
     class Meta:
         model = Advert
         fields = ['title', 'deadline', 'available_positions', 'description']
-        widgets = {'tags': forms.CheckboxSelectMultiple()}
-        # exclude = ('startup')
+
+    def save(self, startup_id, commit=True):
+        advert = super(AdvertForm, self).save(commit=False)
+        advert.startup = Startup.objects.get(pk=startup_id)
+        if commit:
+            advert.save()
+        return advert
