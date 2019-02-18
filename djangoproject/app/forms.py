@@ -44,7 +44,7 @@ class AdvertForm(ModelForm):
 
     def save(self, startup_id, commit=True):
         advert = super(AdvertForm, self).save(commit=False)
-        advert.startup = Startup.objects.get(pk=startup_id)
+        advert.startup = Startup.objects.get(user_id=startup_id)
         if commit:
             advert.save()
         return advert
