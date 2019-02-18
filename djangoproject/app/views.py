@@ -128,8 +128,8 @@ def new_advert(request):
     }
     if request.method == 'POST':
         if advert_form.is_valid():
-            advert_form.save()
-            return HttpResponseRedirect("/startups/")
+            advert_form.save(request.user.id)
+            return HttpResponseRedirect("/adverts/")
     return render(request, 'new_advert.html', context)
 
 def investors(request):
