@@ -36,22 +36,11 @@
           <h1 class="mt-2"> {% block heading %} Welcome to Momentum {% endblock %}</h1>
           <hr class="mt-0 mb-4">
           {% block content %}
-          <div class="grid-container">
-            <div class="filter">Filter</div>
-            {% for content in contents %}
-            <div onclick="location.href='{% url 'content' content.id %}';" class="element-container">
-              <div>
-                <p class="element-title bold">{{ content.title }}</p>
-                <p>{{ content.type }} <br>
-                  {{ content.text|slice:":150" }}... </p>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
           {% endblock %}
         </div>
       </div>
     </div>
+    <script src="/static/js/index.js" type="module" charset="utf-8"></script>
     {% block extra-scripts %}{% endblock %}
   </body>
 </html>

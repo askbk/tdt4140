@@ -1,3 +1,32 @@
 <!DOCTYPE html>
 
 {% extends "base.html" %}
+
+
+{% block content %}
+<div class="grid-container">
+    {% for content in contents %}
+    <div onclick="location.href='{% url 'content' content.id %}';" class="element-container item{{content.id}} content-item" data-tags="{{ content.type }}">
+        <div>
+          <p class="element-title bold">{{ content.title }}</p>
+          <p>{{ content.type }} <br> {{ content.text|slice:":150" }}... </p>
+        </div>
+    </div>
+    {% endfor %}
+  <div class="filter">
+    <p class="bold element-title"> Filter </p>
+    <div>
+      <ul class="element-list">
+        <li> Type: </li>
+        {% for type in types %}
+        <li>
+          <input type="checkbox" class="filter-checkbox-type" id="{{ type }}" name="{{ type }}"/>
+          <label for="{{ type }}"> {{ type }} </label>
+        </li>
+        {% endfor %}
+        <br>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
