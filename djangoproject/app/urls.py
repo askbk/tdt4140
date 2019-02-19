@@ -10,6 +10,7 @@ urlpatterns = [
     path('content/<id>/', views.content, name='content'),
     path('adverts/', views.adverts, name='adverts'),
     path('advert/<id>/', views.advert, name='advert'),
+    path('newadvert/', views.new_advert, name='new_advert'),
     path('startups/', views.startups, name='startups'),
     path('investors/', views.investors, name='investors'),
     path('profile/<id>/', views.profile, name='profile'),
