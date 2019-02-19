@@ -11,6 +11,7 @@ class Address(models.Model):
     postal_code = models.IntegerField()
     city = models.CharField(max_length=120)
     street_address = models.CharField(max_length=120)
+    country = models.CharField(max_length=120)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.street_address + " - " + str(self.postal_code).zfill(4) + ", " + self.city

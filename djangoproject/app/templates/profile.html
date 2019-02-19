@@ -15,11 +15,14 @@
   window.onload = function() {
     L.mapquest.key = '3Ahbrjn0yAjeG9gQgTTSRu4ubu2LXDB4';
 
-    L.mapquest.geocoding().geocode({
-      street: "{{profile.address.street_address}}",
-      city: "{{profile.address.city}}",
-      postalCode: {{profile.address.postal_code}}
-    }, createMap);
+    L.mapquest.geocoding().geocode("{{profile.address.street_address|a_to_a}} {{profile.address.city|a_to_a}} {{profile.address.postal_code}} {{profile.address.country|a_to_a}}", createMap);
+
+      
+      /*{street: "{{profile.address.street_address|a_to_a}}",
+      city: "{{profile.address.city|a_to_a}}",
+      postalCode: {{profile.address.postal_code}},
+      adminArea1Type: "{{profile.address.country|a_to_a}}",
+    }, createMap);*/
 
     function createMap(error, response) {
       var location = response.results[0].locations[0];

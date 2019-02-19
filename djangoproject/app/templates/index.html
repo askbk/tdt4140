@@ -8,7 +8,7 @@
     {% for content in contents %}
     <div onclick="location.href='{% url 'content' content.id %}';" class="element-container item{{content.id}} content-item" data-tags="{{ content.type }}">
         <div>
-          <p class="element-title bold">{{ content.type }}: {{ content.title|slice:":25" }}{% if content.title|length > 25%}...{% endif %}</p>
+          <p class="element-title bold">{{ content.type }}: {{ content.title|slice:":25" }}{% if content.title|length > 25 %}...{% endif %}</p>
           <p> {{ content.text|slice:":150" }}... </p>
         </div>
     </div>
