@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} advert.title | Momentum {% endblock %}
+{% block heading %} {{ advert.title }} {% endblock %}
+
+{% block extra-stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'intro.css' %}">
+{% endblock %}
+{% block body %}
+<div class="intro-logo-container">
+  <h1 class="intro-logo"> MOMENTUM </h1>
+  <p> - Revolutionize the way you build connections
+</div>
+<div class="blinker"> Click anywhere to enter page </div>
+<div class="arrow bounce"></div>
+<script>
+  document.body.addEventListener('click', function() {location.href="{% url 'index' %}"});
+</script>
+{% endblock %}

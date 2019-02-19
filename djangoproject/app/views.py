@@ -7,6 +7,10 @@ from django.contrib.auth.forms import UserCreationForm
 from app.forms import StartupForm, AddressForm, RegisterForm
 #get_list_or_404() henter liste vha filter
 
+
+def intro(request):
+    return render(request, 'intro.html')
+
 def index(request):  #Se urls.py for å se når denne aktiveres
     contents = get_list_or_404(Content)
     types = get_list_or_404(ContentType)
