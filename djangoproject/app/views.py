@@ -203,8 +203,8 @@ def profile(request, id):
         profile = Person.objects.get(user_id=id)
     elif user.groups.filter(name="Investor").exists():
         profile = Investor.objects.get(user_id=id)
-    elif user.is_superuser:
-        return HttpResponseRedirect('/admin/')
+    # elif user.is_superuser:
+    #     return HttpResponseRedirect('/admin/')
     else:
         profile = ""
     context = {

@@ -8,14 +8,30 @@
 
 {% block content %}
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" class="register-form">
 
 
   {% csrf_token %}
   {{ user_form|crispy }}
   {{ address_form|crispy }}
   {{ startup_form|crispy }}
+  <img id="preview-image" />
   <button class="standard-button" type="submit"> Submit </button>
   <button type="button" onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</button>
 </form>
+{% endblock %}
+
+{% block extra-scripts %}
+<script>
+document.getElementById("preview-image").style.display="block";
+document.getElementById("id_image").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        document.getElementById("preview-image").src = e.target.result;
+    };
+
+    reader.readAsDataURL(this.files[0]);
+};
+</script>
 {% endblock %}

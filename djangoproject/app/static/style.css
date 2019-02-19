@@ -18,12 +18,16 @@ body {
   letter-spacing: 1px;
 
 }
+
+.register-form {
+  width:70%;
+  margin: auto;
+}
 .grid-container {
   width: 90%;
   margin: 40px auto;
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
-  grid-gap: 1em;
   /*grid-auto-rows: minmax(75px, auto);*/
   grid-auto-rows: auto;
 }
@@ -41,14 +45,20 @@ body {
   padding: 0.5em;
 }
 
+.element-container {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
 .filter {
   border-radius: 6px;
   align-self: start;
-  grid-row: 1/5;
+  grid-row: 1/10000;
   background-color: rgba(85,85,85,0.8);
   color: #EEE;
   padding: 5px;
 }
+
 .filter .bold {
   text-align: center;
   margin-top:4px;
@@ -117,4 +127,12 @@ body {
 
 .filter-checkbox {
   white-space: nowrap;
+}
+
+#preview-image {
+  width:50px;
+  height: 50px;
+  position: absolute;
+  bottom: 65px;
+  left: 400px;
 }

@@ -23,6 +23,7 @@
       <li><a href="{% url 'adverts' %}">Adverts</a></li>
       <li><a href="{% url 'investors' %}">Investors</a></li>
       {% if user.username != "" %}
+        <li class="right" ><a href="{% url 'logout_user' %}">LOGOUT</a></li>
         <li class="right" ><a href="{% url 'profile' user.id %}"> {{ user.username }} </a></li>
       {% else %}
         <li class="right" ><a href="{% url 'login' %}">LOGIN/REGISTER</a></li>

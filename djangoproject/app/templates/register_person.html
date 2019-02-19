@@ -8,13 +8,14 @@
 
 {% block content %}
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" class="register-form">
 
 
   {% csrf_token %}
   {{ user_form|crispy }}
   {{ address_form|crispy }}
   {{ person_form|crispy }}
+  <img id="image" />
   <button class="standard-button" type="submit"> Submit </button>
   <button type="button" onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</button>
 </form>
