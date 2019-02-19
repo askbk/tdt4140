@@ -116,8 +116,20 @@ def startups(request):
 
 def adverts(request):
     adverts = get_list_or_404(Advert)
+    addresses = get_list_or_404(Address)
+    #   Lager en liste med alle byene det finner startups i
+    cities = set(map(lambda a: a.city, addresses))
+    tags = list(get_list_or_404(Tag))
+
+    for advert in adverts:
+        s_tags = list(advert.startup.tags.all())
+        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        advert.startup.tagslist = tagslist
+
     context = {
-        'adverts': adverts
+        'adverts': adverts,
+        'cities': cities,
+        'tags': tags,
     }
     return render(request, "adverts.html", context)
 

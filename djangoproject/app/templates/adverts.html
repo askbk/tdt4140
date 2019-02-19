@@ -8,9 +8,8 @@
 {% block content %}
 
 <div class="grid-container">
-  <div class="filter">Filter</div>
   {% for advert in adverts %}
-  <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}}">
+  <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}} advert-item" data-tags="{{ advert.startup.address.city }} {{ advert.startup.tagslist }}">
     <div class="element-image-container">
       <img src="{% static advert.startup.image.url %}" class="element-image"  alt="{{adverts.startup}} image can't load"/>
     </div>
@@ -25,5 +24,27 @@
     </div>
   </div>
   {% endfor %}
+  <div class="filter">
+    <p class="bold element-title"> Filter </p>
+    <div>
+      <ul class="element-list">
+        <li> City: </li>
+        {% for city in cities %}
+        <li>
+          <input type="checkbox" class="filter-checkbox-city" id="{{ city }}" name="{{ city }}"/>
+          <label for="{{ city }}"> {{ city }} </label>
+        </li>
+        {% endfor %}
+        <li> Tags: </li>
+        {% for tag in tags %}
+        <li>
+          <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
+          <label for="{{ tag }}"> {{ tag }} </label>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
+<script src="/static/js/adverts.js" type="module" charset="utf-8"></script>
 {% endblock %}
