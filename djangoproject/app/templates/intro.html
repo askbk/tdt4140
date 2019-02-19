@@ -2,20 +2,32 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} advert.title | Momentum {% endblock %}
-{% block heading %} {{ advert.title }} {% endblock %}
-
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'intro.css' %}">
 {% endblock %}
-{% block body %}
-<div class="intro-logo-container">
-  <h1 class="intro-logo"> MOMENTUM </h1>
-  <p> - Revolutionize the way you build connections
+
+
+{% block preheader %}
+<div class="intro-container" onclick="scrollAndLoad()">
+  <div class="intro-logo-container">
+    <h1 class="intro-logo"> MOMENTUM </h1>
+    <p> - Revolutionize the way you build connections </p>
+  </div>
+  <div class="blinker"> Click anywhere to enter page </div>
+  <div class="arrow bounce"></div>
 </div>
-<div class="blinker"> Click anywhere to enter page </div>
-<div class="arrow bounce"></div>
+{% endblock %}
+
+{% block extra-scripts %}
 <script>
-  document.body.addEventListener('click', function() {location.href="{% url 'index' %}"});
+function scrollAndLoad() {
+  window.scrollBy(0, window.innerHeight);
+  setTimeout(function() {
+    document.querySelector(".intro-container").style.display="none";
+    document.querySelector("body").style.overflow="auto";
+    document.querySelector("body").style.backgroundPosition="initial";
+    document.querySelector(".container").style.minHeight="initial";
+  },550)
+}
 </script>
 {% endblock %}

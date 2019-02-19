@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title> {% block title %} Momentum {% endblock %}</title>
+    <title> {% block title %} Welcome | Momentum {% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="/static/media/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'header.css' %}">
@@ -15,7 +15,7 @@
     {% endblock %}
   </head>
   <body>
-    {% block body %}
+    {% block preheader %} {% endblock %}
     {% block header %}
     <ul class="topnav">
       <li><a class="logo logo-font" href="{% url 'index' %}">MOMENTUM</a></li>
@@ -32,13 +32,25 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12">
-          <h1 class="mt-2"> {% block heading %} Momentum {% endblock %}</h1>
+          <h1 class="mt-2"> {% block heading %} Welcome to Momentum {% endblock %}</h1>
           <hr class="mt-0 mb-4">
           {% block content %}
+          <div class="grid-container">
+            <div class="filter">Filter</div>
+            {% for content in contents %}
+            <div onclick="location.href='{% url 'content' content.id %}';" class="element-container">
+              <div>
+                <p class="element-title bold">{{ content.title }}</p>
+                <p>{{ content.type }} <br>
+                  {{ content.text|slice:":150" }}... </p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
           {% endblock %}
         </div>
       </div>
     </div>
-    {% endblock %}
+    {% block extra-scripts %}{% endblock %}
   </body>
 </html>

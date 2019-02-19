@@ -9,7 +9,14 @@ from app.forms import StartupForm, AddressForm, RegisterForm
 
 
 def intro(request):
-    return render(request, 'intro.html')
+    contents = get_list_or_404(Content)
+    types = get_list_or_404(ContentType)
+
+    context = {
+    'contents': contents,
+    'types': types,
+    }
+    return render(request, 'intro.html', context)
 
 def index(request):  #Se urls.py for å se når denne aktiveres
     contents = get_list_or_404(Content)
