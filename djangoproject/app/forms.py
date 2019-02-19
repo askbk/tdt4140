@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Address, Startup, Tag
+from app.models import Address, Startup, Tag, Person
 from django.forms import ModelForm
 
 
@@ -16,6 +16,12 @@ class StartupForm(ModelForm):
                 fields = ['bio', 'phase', 'tags', 'employees','user', 'image']
                 widgets = {'tags': forms.CheckboxSelectMultiple()}
                 exclude = ('user','address')
+
+class PersonForm(ModelForm):
+    class Meta:
+        model = Person
+        fields = ['bio']
+        exclude = ('user','address')
 
 class RegisterForm(UserCreationForm):
         email = forms.EmailField(label = "Email")
