@@ -7,6 +7,39 @@
 
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+
+<script type="text/javascript">
+  window.onload = function() {
+    L.mapquest.key = '3Ahbrjn0yAjeG9gQgTTSRu4ubu2LXDB4';
+
+    L.mapquest.geocoding().geocode({
+      street: 'Kolbjørn Hejes vei 1E',
+      city: 'Trondheim',
+      postalCode: '7034'
+    }, createMap);
+
+    function createMap(error, response) {
+      var location = response.results[0].locations[0];
+      var latLng = location.displayLatLng;
+      var map = L.mapquest.map('map', {
+        center: latLng,
+        layers: L.mapquest.tileLayer('map'),
+        zoom: 14
+      });
+
+
+
+      L.marker(latLng, {
+        icon: L.mapquest.icons.marker(),
+        draggable: false,
+      }).bindPopup("Startup").addTo(map);
+
+      map.addControl(L.mapquest.control());
+    }
+  }
+</script>
 {% endblock %}
 
 {% block content %}
@@ -20,5 +53,7 @@
     <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Edit profile</button>
   </div>
 </div>
+<div id="map" style="width: 100%; height: 530px;"></div>
+
 
 {% endblock %}
