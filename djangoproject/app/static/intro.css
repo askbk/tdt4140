@@ -38,9 +38,17 @@ body{
   transform: translateX(-50%) translateY(-50%);
 }
 
+hr {
+  display:block;
+  margin: 25px 0;
+  height: 1px;
+  background: black;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(black), to(black), color-stop(50%, white));
+}
 .intro-logo-container p {
   margin-top: 0;
   color: white;
+  text-align: center;
   font-size: 30px;
   font-family: Verdana;
 }
