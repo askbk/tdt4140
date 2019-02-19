@@ -106,7 +106,8 @@ def edit_profile(request):
         return HttpResponseRedirect("/edit_person/")
     elif str(group) == "Investor":
         return HttpResponseRedirect("/edit_investor/")
-
+    else:
+        return HttpResponseRedirect("/index/")
 @login_required
 def edit_startup(request):
     user = request.user
