@@ -15,9 +15,9 @@
     L.mapquest.key = '3Ahbrjn0yAjeG9gQgTTSRu4ubu2LXDB4';
 
     L.mapquest.geocoding().geocode({
-      street: 'Kolbjørn Hejes vei 1E',
-      city: 'Trondheim',
-      postalCode: '7034'
+      street: "{{profile.address.street_address}}",
+      city: "{{profile.address.city}}",
+      postalCode: {{profile.address.postal_code}}
     }, createMap);
 
     function createMap(error, response) {
@@ -34,7 +34,7 @@
       L.marker(latLng, {
         icon: L.mapquest.icons.marker(),
         draggable: false,
-      }).bindPopup("Startup").addTo(map);
+      }).bindPopup("{{profile_user.first_name}} {{profile_user.last_name}}" ).addTo(map);
 
       map.addControl(L.mapquest.control());
     }
@@ -51,7 +51,7 @@
   <p> {{profile.bio}} </p>
   <div class = 'buttons'>
     <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Logout</button>
-    <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Edit profile</button>
+    <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Edit profile  </button>
     <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Add advert</button>
   </div>
   <div id="map" style="width: 100%; height: 530px;"></div>
