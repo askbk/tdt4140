@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Edit profile | Momentum {% endblock %}
+{% block heading %} Edit profile {% endblock %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ address_form|crispy }}
+  {{ startup_form|crispy }}
+  <button class="standard-button" type="submit"> Submit </button>
+  <button type="button" onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</button>
+</form>
+
+{% endblock %}

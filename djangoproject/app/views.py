@@ -87,8 +87,8 @@ def profile(request, id):
     else:
         profile = ""
     context = {
-        'user': request.user,
-        'profile': profile,
+        'profile_user': user, #user objekt til den profilen du besøker
+        'profile': profile, #Startup/Investor/Person objekt
     }
     return render(request, 'profile.html', context)
 

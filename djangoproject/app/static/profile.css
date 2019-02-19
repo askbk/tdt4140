@@ -1,0 +1,18 @@
+h1{
+  color: black;
+  text-align: center;
+}
+h2{
+  color: black;
+  text-align: center;
+  font-style: italic;
+}
+bio{
+  color: black;
+  text-align: center;
+}
+.profile_wrapper{
+  width: 75%;
+  margin: auto;
+  text-align: center;
+}
