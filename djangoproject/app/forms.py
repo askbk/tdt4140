@@ -37,7 +37,26 @@ class RegisterForm(UserCreationForm):
             user.first_name, user.last_name = self.cleaned_data["fullname"].split(None, 1)
         else:
             user.first_name = self.cleaned_data["fullname"]
-            user.email = self.cleaned_data["email"]
+        user.email = self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user
+
+class UpdateForm(ModelForm):
+    email = forms.EmailField(label = "Email")
+    fullname = forms.CharField(label = "Name")
+
+    class Meta:
+        model = User
+        fields = ['fullname', 'email']
+
+    def save(self, commit=True):
+        user = super(UpdateForm, self).save(commit=False)
+        if len(self.cleaned_data["fullname"].split(None, 1)) > 1:
+            user.first_name, user.last_name = self.cleaned_data["fullname"].split(None, 1)
+        else:
+            user.first_name = self.cleaned_data["fullname"]
+        user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user

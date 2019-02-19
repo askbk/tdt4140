@@ -10,10 +10,11 @@
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
+  {{ user_form|crispy }}
   {{ address_form|crispy }}
   {{ startup_form|crispy }}
   <button class="standard-button" type="submit"> Submit </button>
-  <button type="button" onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</button>
+  <button type="button" onclick="location.href='{% url 'profile' user.id %}';" class="red-button">Cancel</button>
 </form>
 
 {% endblock %}

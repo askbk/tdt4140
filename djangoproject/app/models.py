@@ -31,7 +31,7 @@ class Tag(models.Model):
         return self.title;
 
 class Startup(models.Model):
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
     employees = models.IntegerField()
@@ -42,13 +42,15 @@ class Startup(models.Model):
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
 
+
 class Person(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
     address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
+
 
 class Investor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -56,6 +58,7 @@ class Investor(models.Model):
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
+
 
 class Advert(models.Model):
     title = models.CharField(max_length=120)
