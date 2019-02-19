@@ -222,6 +222,8 @@ def login_user(request):
 
     if user is not None:
         auth_login(request, user)
+        if user.is_superuser:
+            return HttpResponseRedirect("/admin/")
         return HttpResponseRedirect('/profile/'+str(user.id)+"/")
     return render(request, "login.html", {'wrongdetails': 1})
 

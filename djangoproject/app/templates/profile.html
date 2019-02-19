@@ -57,7 +57,9 @@
   <div class="buttons">
     {% if profile_user.id == user.id %}
     <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Logout</button>
+    {% if not profile_user.is_superuser %}
     <button class="standard-button" onclick="location.href='{% url 'edit_profile' %}';" style="margin:10px;">Edit profile  </button>
+    {% endif %}
     {% if profile|to_class_name == "Startup" %}
     <button class="standard-button" onclick="location.href='{% url 'new_advert' %}';" style="margin:10px;">Add advert </button>
     {% endif %}
