@@ -1,6 +1,6 @@
 test:
   script:
-  # this configures Django application to use attached postgres database that is run on `postgres` host
+  # this configures Django application to use attached ntnu database (tror jeg)
   - export DATABASE_URL=mysql.stud.ntnu.no
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
