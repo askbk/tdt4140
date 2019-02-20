@@ -15,7 +15,6 @@ cache:
 
 before_script:
   - python -V
-  - pip install -r requirements.txt
 
 test:
   script:
