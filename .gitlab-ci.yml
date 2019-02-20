@@ -20,4 +20,4 @@ before_script:
 
 test:
   script:
-  - python manage.py test --keepdb --settings conf.test_settings
+  - python manage.py test
