@@ -1,21 +1,13 @@
-image: python:3.7.2
-
-services:
-  - mysql:8.0.11
-
-variables:
-  Host: mysql
-  User: magnram_jacal
-  MYSQL_ROOT_PASSWORD: jacal
-  Database: magnram_pu
-
-cache:
-  paths:
-  - ~/.cache/pip/
-
-before_script:
-  - python -V
-
 test:
   script:
-  - python djangoproject/manage.py test
+  - apt-get update
+  - wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
+  - tar xvf Python-3.6.3.tgz
+  - cd Python-3.6.3
+  - ./configure --enable-optimizations
+  - make -j8 build_all 
+  - make -j8 install
+  - cd ..
+  - python3.6 -m pip install --upgrade pip
+  - python3.6 -m pip install -r requirements.txt
+  - python3.6 matega_project/manage.py test
