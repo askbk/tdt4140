@@ -18,4 +18,4 @@ before_script:
 
 test:
   script:
-  - python manage.py test
+  - python djangoproject/manage.py test
