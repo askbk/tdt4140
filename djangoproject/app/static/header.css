@@ -69,7 +69,7 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #111;
 }
 
 ul.topnav li {float: left;}
@@ -82,7 +82,7 @@ ul.topnav li a {
   text-decoration: none;
 }
 
-ul.topnav li a.logo {background-color: #444;}
+ul.topnav li a.logo {background-color: #222;}
 
 ul.topnav li a:hover {background-color: #111;}
 
