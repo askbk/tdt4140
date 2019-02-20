@@ -6,7 +6,7 @@ services:
 variables:
   Host: mysql
   User: magnram_jacal
-  Password: jacal
+  MYSQL_ROOT_PASSWORD: jacal
   Database: magnram_pu
 
 cache:
