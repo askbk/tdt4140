@@ -12,38 +12,10 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 {% if profile|to_class_name == "Startup" %}
 <script type="text/javascript">
-  window.onload = function() {
-    L.mapquest.key = '3Ahbrjn0yAjeG9gQgTTSRu4ubu2LXDB4';
-
-    L.mapquest.geocoding().geocode("{{profile.address.street_address|a_to_a}} {{profile.address.city|a_to_a}} {{profile.address.postal_code}} {{profile.address.country|a_to_a}}", createMap);
-
-      
-      /*{street: "{{profile.address.street_address|a_to_a}}",
-      city: "{{profile.address.city|a_to_a}}",
-      postalCode: {{profile.address.postal_code}},
-      adminArea1Type: "{{profile.address.country|a_to_a}}",
-    }, createMap);*/
-
-    function createMap(error, response) {
-      var location = response.results[0].locations[0];
-      var latLng = location.displayLatLng;
-      var map = L.mapquest.map('map', {
-        center: latLng,
-        layers: L.mapquest.tileLayer('map'),
-        zoom: 14
-      });
-
-
-
-      L.marker(latLng, {
-        icon: L.mapquest.icons.marker(),
-        draggable: false,
-      }).bindPopup("{{profile_user.first_name}} {{profile_user.last_name}}" ).addTo(map);
-
-      map.addControl(L.mapquest.control());
-    }
-  }
+    const address = "{{profile.address.street_address|a_to_a}} {{profile.address.city|a_to_a}} {{profile.address.postal_code}} {{profile.address.country|a_to_a}}",
+        popupText = "{{profile_user.first_name}} {{profile_user.last_name}}";
 </script>
+<script type="text/javascript" src="{% static 'js/startup.js' %}"></script>
 {% endif %}
 {% endblock %}
 
