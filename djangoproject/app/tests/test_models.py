@@ -1,5 +1,7 @@
 from django.test import TestCase
-from app.models import Address, Phase
+from django.contrib.auth.models import User
+from app.models import Address, Phase, Tag, Startup, User
+from django.conf import settings
 
 class AddressTest(TestCase):
     def create_address(self):
@@ -30,6 +32,24 @@ class TagTest(TestCase):
 
     def test_tag_creation(self):
         w = self.create_tag()
+        self.assertTrue(isinstance(w, Tag))
+        self.assertEqual("Banking", w.title)
+        self.assertEqual("Banking", w.__str__())
+
+class StartupTest(TestCase):
+    def create_startup(self):
+        return Startup.objects.create(
+            bio="A blockchain startup with the mission of creating a sustainable
+                banking system",
+            user=User.objects.create(
+                username="Bankchain",
+                password="passord1"
+
+            )
+        )
+
+    def test_startup_creation(self):
+        w = self.create_startup()
         self.assertTrue(isinstance(w, Tag))
         self.assertEqual("Banking", w.title)
         self.assertEqual("Banking", w.__str__())
