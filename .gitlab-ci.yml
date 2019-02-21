@@ -1,5 +1,6 @@
+image: python:3.6
 test:
-  script: python3 djangoproject/manage.py test app
+  script: python3.6 djangoproject/manage.py test app
 #  - apt-get update
 #  - wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz
 #  - tar xvf Python-3.6.3.tgz
