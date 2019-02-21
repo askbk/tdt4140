@@ -10,18 +10,11 @@ class AddressTest(TestCase):
     def test_address_creation(self):
         w = self.create_address()
         self.assertTrue(isinstance(w, Address))
-<<<<<<< HEAD
         self.assertEqual(1111, w.postal_code)
         self.assertEqual("Tulleby", w.city)
         self.assertEqual("Tullegate 1", w.street_address)
         self.assertEqual("Tulleland", w.country)
-        self.assertEqual("Tullegate 1 - 1111, Tulleby", w.__str__())
-=======
-        self.assertEqual(7042, w.postal_code)
-        self.assertEqual("Trondheim", w.city)
-        self.assertEqual("Dyre Halses Gate 5", w.street_address)
-        self.assertEqual("Norway", w.country)
-        self.assertEqual("Dyre Halses Gate 5 - 7042, Trondheim", w.__str__())
+        self.assertEqual("Tullegate1 - 1111, Tulleby", w.__str__())
 
 class PhaseTest(TestCase):
     def create_phase(self):
@@ -61,4 +54,3 @@ class TagTest(TestCase):
 #         self.assertEqual("""A blockchain startup with the mission of creating a
 #             sustainable banking system""", w.bio)
 #         self.assertEqual("Banking", w.__str__())
->>>>>>> master
