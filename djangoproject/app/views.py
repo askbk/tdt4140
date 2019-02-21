@@ -71,7 +71,7 @@ def register_startup(request):
             temp.address = Address.objects.all().order_by("-id")[0]
             temp.save()
             startup_form.save_m2m()
-            return HttpResponseRedirect('/profile/'+str(request.user.id))
+            return HttpResponseRedirect('/profile/'+str(temp.user.id))
     return render(request, 'register_startup.html', context)
 
 def register_person(request):
@@ -92,7 +92,7 @@ def register_person(request):
             Group.objects.get(name='Person').user_set.add(temp.user)
             temp.address = Address.objects.all().order_by("-id")[0]
             temp.save()
-            return HttpResponseRedirect('/profile/'+str(request.user.id))
+            return HttpResponseRedirect('/profile/'+str(temp.user.id))
     return render(request, 'register_person.html',context)
 
 @login_required
