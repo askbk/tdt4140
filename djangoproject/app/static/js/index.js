@@ -5,5 +5,6 @@ const startupFilter = new Filter(
     "content-item",
     [
         "filter-checkbox-type"
-    ]
+    ],
+    "search-input"
 );
