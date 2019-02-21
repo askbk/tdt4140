@@ -39,8 +39,8 @@ class TagTest(TestCase):
 class StartupTest(TestCase):
     def create_startup(self):
         return Startup.objects.create(
-            bio="A blockchain startup with the mission of creating a sustainable
-                banking system",
+            bio="""A blockchain startup with the mission of creating a sustainable
+                banking system""",
             user=User.objects.create(
                 username="Bankchain",
                 password="passord1"
@@ -50,6 +50,7 @@ class StartupTest(TestCase):
 
     def test_startup_creation(self):
         w = self.create_startup()
-        self.assertTrue(isinstance(w, Tag))
-        self.assertEqual("Banking", w.title)
+        self.assertTrue(isinstance(w, Startup))
+        self.assertEqual("A blockchain startup with the mission of creating a sustainable
+            banking system", w.bio)
         self.assertEqual("Banking", w.__str__())
