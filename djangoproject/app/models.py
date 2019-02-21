@@ -38,7 +38,7 @@ class Startup(models.Model):
     employees = models.IntegerField()
     phase = models.ForeignKey(Phase, blank=True, default=1, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
-    image = models.ImageField(upload_to='images/', default='no-image.png')
+    image = models.ImageField(upload_to='images/', default='images/no-image.png')
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
@@ -86,7 +86,7 @@ class Content(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     released = models.DateTimeField(auto_now=True)
     event_datetime = models.DateTimeField(blank=True, null=True)
-    image = models.ImageField(upload_to='images/', default='no-image.png')
+    image = models.ImageField(upload_to='images/', default='images/no-background.jpg')
 
     def __str__(self):
         return str(self.type) + ": " + self.title;
