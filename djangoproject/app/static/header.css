@@ -5,71 +5,13 @@
          url('fonts/anurati-regular-webfont.woff') format('woff');
 }
 
-/*
-header {
-  background-color: #333333;
-  height: 50px;
-  width: 100%;
-  position: relative;
-  font-family: 'Abel', sans-serif;
-}
-.logo {
-  color: white;
-  position: absolute;
-  top: 12px;
-  left: 10px;
-  font-size: 30px;
-  font-family: 'anuratiregular', 'Abel', Arial;
-}
-.logo:hover {
-  cursor:pointer;
-}
-.link-container {
-  color: white;
-  position: absolute;
-  height:100%;
-  left: 0;
-  right: 0;
-  width: 310px;
-  margin: 0 auto;
-}
-.nav-link {
-  height: 100%;
-  display: inline-block;
-  position: relative;
-  width: 100px;
-  text-align: center;
-  line-height: -20px;
-  font-size: 20;
-}
-.nav-link:hover {
-  background-color: #555;
-  cursor: pointer;
-}
-.nav-link span {
-  position: absolute;
-  bottom: 15px;
-  left:25px;
-}
-.nav-profile {
-  position: absolute;
-  right: 10px;
-  color: white;
-  top: 5px;
-  font-size: 30px;
-  font-family: 'Abel', Arial;
-}
-.nav-profile:hover {
-  cursor: pointer;
-}
-*/
-
 ul.topnav {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #111;
+  box-shadow: 0 6px 10px rgba(57, 63, 72, 0.3);
 }
 
 ul.topnav li {float: left;}
@@ -84,7 +26,7 @@ ul.topnav li a {
 
 ul.topnav li a.logo {background-color: #222;}
 
-ul.topnav li a:hover {background-color: #111;}
+ul.topnav li a:hover {background-color: #333;}
 
 ul.topnav li.right {float: right;}
 

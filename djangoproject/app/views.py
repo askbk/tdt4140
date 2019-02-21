@@ -6,12 +6,24 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 from app.forms import StartupForm, AddressForm, RegisterForm, AdvertForm, PersonForm, UpdateForm
 from django.contrib.auth.decorators import login_required
-#get_list_or_404() henter liste vha filter
+from django.core.exceptions import ObjectDoesNotExist
 
+
+
+# METHODS START #
+
+def form_address_exists(info):
+    try:
+        go = Address.objects.filter(postal_code=info['postal_code']).filter(city=info['city']).filter(street_address=info['street_address']).filter(country=info['country']).first()
+    except ObjectDoesNotExist:
+        go = None
+    return go
+
+# METHODS END #
 
 def intro(request):
-    contents = get_list_or_404(Content)
-    types = get_list_or_404(ContentType)
+    contents = list(Content.objects.all()) #get_list_or_404() henter liste vha filter
+    types = list(ContentType.objects.all())
 
     context = {
     'contents': contents,
@@ -20,8 +32,8 @@ def intro(request):
     return render(request, 'intro.html', context)
 
 def index(request):  #Se urls.py for å se når denne aktiveres
-    contents = get_list_or_404(Content)
-    types = get_list_or_404(ContentType)
+    contents =list(Content.objects.all())
+    types = list(ContentType.objects.all())
 
     context = {
     'contents': contents,
@@ -30,7 +42,7 @@ def index(request):  #Se urls.py for å se når denne aktiveres
     return render(request, 'index.html', context)
 
 def content(request, id):
-    content = get_object_or_404(Content, id=id)
+    content = list(Content.objects.filter(id=id).all())
     context = {
         'content': content
     }
@@ -53,6 +65,8 @@ def register(request):
     return render(request, 'register.html')
 
 def register_startup(request):
+    if request.user.is_authenticated:
+        HttpResponseRedirect('/profile/'+str(request.user.id))
     user_form = RegisterForm(request.POST)
     address_form = AddressForm(request.POST)
     startup_form = StartupForm(request.POST, request.FILES)
@@ -64,17 +78,26 @@ def register_startup(request):
     if request.method == 'POST':
         if user_form.is_valid() and startup_form.is_valid() and address_form.is_valid():
             user_form.save()
-            address_form.save()
             temp = startup_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
             Group.objects.get(name='Startup').user_set.add(temp.user)
-            temp.address = Address.objects.all().order_by("-id")[0]
+            cleaned_info = address_form.cleaned_data
+            go = form_address_exists(cleaned_info)
+            if go == None:
+                address_form.save()
+                temp.address = Address.objects.all().order_by("-id")[0]
+            else:
+                temp.address = go
             temp.save()
             startup_form.save_m2m()
+            user = authenticate(username=user_form.cleaned_data["username"], password=user_form.cleaned_data["password1"])
+            auth_login(request, user)
             return HttpResponseRedirect('/profile/'+str(temp.user.id))
     return render(request, 'register_startup.html', context)
 
 def register_person(request):
+    if request.user.is_authenticated:
+        HttpResponseRedirect('/profile/'+str(request.user.id))
     user_form = RegisterForm(request.POST)
     address_form = AddressForm(request.POST)
     person_form = PersonForm(request.POST,request.FILES)
@@ -86,12 +109,19 @@ def register_person(request):
     if request.method == 'POST':
         if user_form.is_valid() and address_form.is_valid() and person_form.is_valid():
             user_form.save()
-            address_form.save()
             temp = person_form.save(commit=False)
             temp.user = User.objects.latest('date_joined')
             Group.objects.get(name='Person').user_set.add(temp.user)
-            temp.address = Address.objects.all().order_by("-id")[0]
+            cleaned_info = address_form.cleaned_data
+            go = form_address_exists(cleaned_info)
+            if go == None:
+                address_form.save()
+                temp.address = Address.objects.all().order_by("-id")[0]
+            else:
+                temp.address = go
             temp.save()
+            user = authenticate(username=user_form.cleaned_data["username"], password=user_form.cleaned_data["password1"])
+            auth_login(request, user)
             return HttpResponseRedirect('/profile/'+str(temp.user.id))
     return render(request, 'register_person.html',context)
 
@@ -99,7 +129,6 @@ def register_person(request):
 def edit_profile(request):
     user = request.user
     group = user.groups.first()
-    print(group)
     if str(group) == "Startup":
         return HttpResponseRedirect("/edit_startup/")
     elif str(group) == "Person":
@@ -108,6 +137,7 @@ def edit_profile(request):
         return HttpResponseRedirect("/edit_investor/")
     else:
         return HttpResponseRedirect("/index/")
+
 @login_required
 def edit_startup(request):
     user = request.user
@@ -233,15 +263,15 @@ def logout_user(request):
 
 
 def startups(request):
-    startups = get_list_or_404(Startup)
-    tags = list(get_list_or_404(Tag))
+    startups = list(Startup.objects.all())
+    tags = list(Tag.objects.all())
 
     for startup in startups:
         s_tags = list(startup.tags.all())
         tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
         startup.tagslist = tagslist
 
-    phases = get_list_or_404(Phase)
+    phases = list(Phase.objects.all())
     context = {
         'startups': startups,
         'phases': phases,
@@ -250,11 +280,11 @@ def startups(request):
     return render(request, "startups.html", context)
 
 def adverts(request):
-    adverts = get_list_or_404(Advert)
-    addresses = get_list_or_404(Address)
+    adverts = list(Advert.objects.all())
+    addresses = list(Address.objects.all())
     #   Lager en liste med alle byene det finner startups i
     cities = set(map(lambda a: a.city, addresses))
-    tags = list(get_list_or_404(Tag))
+    tags = list(list(Tag.objects.all()))
 
     for advert in adverts:
         s_tags = list(advert.startup.tags.all())

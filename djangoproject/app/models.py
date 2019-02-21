@@ -34,7 +34,7 @@ class Tag(models.Model):
 class Startup(models.Model):
     bio = models.TextField(max_length=500, blank=True, null=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     employees = models.IntegerField()
     phase = models.ForeignKey(Phase, blank=True, default=1, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
@@ -47,7 +47,7 @@ class Startup(models.Model):
 class Person(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True, null=True)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name

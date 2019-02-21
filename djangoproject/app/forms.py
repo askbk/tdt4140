@@ -8,7 +8,7 @@ from django.forms import ModelForm
 class AddressForm(ModelForm):
     class Meta:
         model = Address
-        fields = ['postal_code', 'city', 'street_address']
+        fields = ['postal_code', 'city', 'street_address', 'country']
 
 class StartupForm(ModelForm):
     class Meta:

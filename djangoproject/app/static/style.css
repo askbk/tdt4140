@@ -97,6 +97,7 @@ body {
 .element-image {
   width: 75px;
   height: 75px;
+  border-radius: 100%;
 }
 
 .standard-button, .red-button {
