@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Address, Phase, Tag, Startup, Person, Investor, Advert, Content
+from .models import Address, Phase, Tag, Startup, Person, Investor, Advert, Content, ContentType
 
 # Register your models here.
 admin.site.register(Address)
 admin.site.register(Phase)
 admin.site.register(Tag)
+admin.site.register(ContentType)
 
 admin.site.register(Startup)
 admin.site.register(Person)

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 
 {% extends "base.html" %}
-
-{% block title %} advert.title | Momentum {% endblock %}
+{% load static %}
+{% block title %} {{ content.title }} | Momentum {% endblock %}
 {% block heading %} {{ content.title }} {% endblock %}
 
 {% block content %}
-
+<div style="width: 100%;">
+  <img src="{% static content.image.url %}" alt="{{content}} image can't load" style="width: 100%;"/>
+</div>
+<br>
 <p> {{content.text}} </p>
 
 {% endblock %}

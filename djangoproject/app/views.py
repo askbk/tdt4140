@@ -32,7 +32,7 @@ def intro(request):
     return render(request, 'intro.html', context)
 
 def index(request):  #Se urls.py for å se når denne aktiveres
-    contents =list(Content.objects.all())
+    contents = list(Content.objects.all())
     types = list(ContentType.objects.all())
 
     context = {
@@ -42,7 +42,7 @@ def index(request):  #Se urls.py for å se når denne aktiveres
     return render(request, 'index.html', context)
 
 def content(request, id):
-    content = list(Content.objects.filter(id=id).all())
+    content = get_object_or_404(Content, id=id)
     context = {
         'content': content
     }
@@ -280,7 +280,7 @@ def startups(request):
     return render(request, "startups.html", context)
 
 def adverts(request):
-    adverts = list(Advert.objects.all())
+    adverts = list(Advert.objects.order_by("deadline").all())
     addresses = list(Address.objects.all())
     #   Lager en liste med alle byene det finner startups i
     cities = set(map(lambda a: a.city, addresses))
