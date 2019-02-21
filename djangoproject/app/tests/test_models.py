@@ -23,3 +23,13 @@ class PhaseTest(TestCase):
         self.assertTrue(isinstance(w, Phase))
         self.assertEqual("Funding phase", w.title)
         self.assertEqual("Funding phase", w.__str__())
+
+class TagTest(TestCase):
+    def create_tag(self):
+        return Tag.objects.create(title="Banking")
+
+    def test_tag_creation(self):
+        w = self.create_tag()
+        self.assertTrue(isinstance(w, Tag))
+        self.assertEqual("Banking", w.title)
+        self.assertEqual("Banking", w.__str__())
