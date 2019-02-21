@@ -39,8 +39,7 @@ class TagTest(TestCase):
 class StartupTest(TestCase):
     def create_startup(self):
         return Startup.objects.create(
-            bio="""A blockchain startup with the mission of creating a sustainable
-                banking system""",
+            bio="A blockchain startup with the mission of creating a sustainable banking system",
             user=User.objects.create(
                 username="Bankchain",
                 password="passord1"
