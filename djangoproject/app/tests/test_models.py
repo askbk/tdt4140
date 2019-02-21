@@ -14,7 +14,7 @@ class AddressTest(TestCase):
         self.assertEqual("Tulleby", w.city)
         self.assertEqual("Tullegate 1", w.street_address)
         self.assertEqual("Tulleland", w.country)
-        self.assertEqual("Tullegate1 - 1111, Tulleby", w.__str__())
+        self.assertEqual("Tullegate 1 - 1111, Tulleby", w.__str__())
 
 class PhaseTest(TestCase):
     def create_phase(self):
