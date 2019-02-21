@@ -1,5 +1,5 @@
 from django.test import TestCase
-from app.models import Address
+from app.models import Address, Phase
 
 class AddressTest(TestCase):
     def create_address(self):
@@ -13,3 +13,13 @@ class AddressTest(TestCase):
         self.assertEqual("Dyre Halses Gate 5", w.street_address)
         self.assertEqual("Norway", w.country)
         self.assertEqual("Dyre Halses Gate 5 - 7042, Trondheim", w.__str__())
+
+class PhaseTest(TestCase):
+    def create_phase(self):
+        return Phase.objects.create(title="Funding phase")
+
+    def test_phase_creation(self):
+        w = self.create_phase()
+        self.assertTrue(isinstance(w, Phase))
+        self.assertEqual("Funding phase", w.title)
+        self.assertEqual("Funding phase", w.__str__())
