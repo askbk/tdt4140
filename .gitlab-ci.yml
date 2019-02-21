@@ -12,4 +12,4 @@ test:
   - python3.6 -m pip install -r requirements.txt
   - python3.6 -m pip install --upgrade django-crispy-forms
   - python3.6 -m pip install pillow
-  - python3.6 djangoproject/manage.py test
+  - python3.6 djangoproject/manage.py test app
