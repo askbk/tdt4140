@@ -6,7 +6,7 @@
 {% block content %}
 <div class="grid-container">
     {% for content in contents %} {# Her kjører den forløkke #}
-    <div onclick="location.href='{% url 'content' content.id %}';" class="element-container item{{content.id}} content-item fp-element" data-tags="{{ content.type }}" style= 'background: white url("{% static content.image.url %}"); background-size: cover;'>
+    <div onclick="location.href='{% url 'content' content.id %}';" class="element-container item{{content.id}} content-item fp-element" data-tags="{{ content.type }}" style= 'background: white url("{% static content.image.url %}"); background-size: cover;' data-text="{{ content.title }} {{ content.author.first_name }} {{ content.author.last_name}}">
         <div class= blurry-box>
 
           <p class="element-title bold">{{ content.type }}: {{ content.title|slice:":25" }}{% if content.title|length > 25 %}...{% endif %}</p>
