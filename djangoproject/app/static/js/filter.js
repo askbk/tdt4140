@@ -1,10 +1,10 @@
 export class Filter {
-    constructor(DEBUG_MODE, itemSelector, filterCheckboxSelectors) {
+    constructor(DEBUG_MODE, itemSelector, filterCheckboxSelectors, searchBoxSelector) {
         this.DEBUG_MODE = DEBUG_MODE;
         //  Velger alle elementer som skal filtreres blant
         this.items = document.getElementsByClassName(itemSelector);
         this.filterCheckboxSelectors = filterCheckboxSelectors;
-        // this.filterCheckboxes = document.getElementsByClassName("filter-checkbox");
+        this.searchBox = document.getElementById(searchBoxSelector);
 
         //  Alle gruppene med filter som skal brukes
         this.filterCheckboxGroups = [];
@@ -23,14 +23,24 @@ export class Filter {
             for (let checkbox of checkboxGroup) {
                 checkbox.addEventListener(
                     "change",
-                    this.changeHandler.bind(this, checkbox)
+                    this.checkHandler.bind(this, checkbox)
                 );
             }
+        }
+
+        //  Dersom man skal bruke en søkeboks
+        if (this.searchBox) {
+            this.freetext = new Set();
+            this.searchBox.addEventListener(
+                "keyup",
+                this.searchHandler.bind(this)
+            );
         }
     }
 
     //  Går gjennom hver filtercheckboxgroup og sjekker at minst én tag fra
-    //  hver filtreringsgruppe er tilstede
+    //  hver filtreringsgruppe er tilstede.
+    //  Sjekker så at alt fra freetext er tilstede i tittelen.
     handleItem(item) {
         const tags = new Set(item.dataset.tags.split(" "));
 
@@ -46,11 +56,27 @@ export class Filter {
             }
         }
 
+        if (this.searchBox) {
+            const text = item.dataset.text.toLowerCase();
+
+            if (this.DEBUG_MODE) {
+                console.log("---\n item has text:");
+                console.log(text);
+                console.log("matching agains set:");
+                console.log(this.freetext);
+            }
+
+            if (!this.isContained(text, this.freetext)) {
+                item.style.display = "none";
+                return;
+            }
+        }
+
         item.style.display = "block";
     }
 
-    //  Eventhandler for endring av checkboxes
-    changeHandler(el, e) {
+    //  Event handler for endring av checkboxes
+    checkHandler(el, e) {
         const filterGroup = el.classList[0];
 
         for (let i = 0, len = this.filterCheckboxSelectors.length; i < len; i++) {
@@ -73,6 +99,15 @@ export class Filter {
         }
     }
 
+    //  Event handler for søkefelt
+    searchHandler() {
+        this.freetext = new Set(this.searchBox.value.toLowerCase().split(" "));
+
+        for (let i = 0, len = this.items.length; i < len; i++) {
+            this.handleItem(this.items[i]);
+        }
+    }
+
     //  Sjekker om filtertags er tilstede for et item.
     zeroIntersection(setA, setB) {
         if (setA.size === 0) {
@@ -86,6 +121,17 @@ export class Filter {
                 return false;
             }
         }
+        return true;
+    }
+
+    //  Sjekker om elementer fra set er inneholdt i strengen
+    isContained(text, set) {
+        for (let el of set) {
+            if (text.indexOf(el) === -1) {
+                return false;
+            }
+        }
+
         return true;
     }
 

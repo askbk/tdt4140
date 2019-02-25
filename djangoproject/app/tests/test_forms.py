@@ -9,7 +9,7 @@ class UserTest(TestCase):
     def test_user_registration(self):
         pw_mismatch = {"username": "Bankchain", "password1": "passord1", "passord2": "passord2"}
         user_creation_form = UserCreationForm(data=pw_mismatch)
-        self.assertTrue(not user_creation_form.is_valid())
+        self.assertFalse(user_creation_form.is_valid())
         pw_match = {"username": "Chainbank", "password1": "passord1", "passord2": "passord1"}
         user_creation_form = UserCreationForm(data=pw_match)
         self.assertTrue(user_creation_form.is_valid())
