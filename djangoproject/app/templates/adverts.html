@@ -9,7 +9,7 @@
 
 <div class="grid-container">
   {% for advert in adverts %}
-  <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}} advert-item" data-tags="{{ advert.startup.address.city }} {{ advert.startup.tagslist }}" data-text="{{ advert.title }} { advert.startup }} {{ advert.startup.address.city }} {{ advert.startup.tagslist }}">
+  <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}} advert-item" data-tags="{{ advert.startup.address.city }} {{ advert.startup.tagslist }}" data-text="{{ advert.title }} {{ advert.startup }} {{ advert.startup.address.city }} {{ advert.startup.tagslist }}">
     <div class="element-image-container">
       <img src="{% static advert.startup.image.url %}" class="element-image"  alt="{{adverts.startup}} image can't load"/>
     </div>
