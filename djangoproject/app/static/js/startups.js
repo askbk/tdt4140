@@ -6,5 +6,6 @@ const startupFilter = new Filter(
     [
         "filter-checkbox-phase",
         "filter-checkbox-tags"
-    ]
+    ],
+    "search-input"
 );
