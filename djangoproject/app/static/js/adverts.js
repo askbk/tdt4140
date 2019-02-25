@@ -6,5 +6,6 @@ const advertFilter = new Filter(
     [
         "filter-checkbox-city",
         "filter-checkbox-tags"
-    ]
+    ],
+    "search-input"
 );
