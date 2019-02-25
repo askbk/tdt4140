@@ -10,17 +10,20 @@
 {% endblock %}
 
 {% block content %}
-<div class= "advert_wrapper">
-  <p> {{advert.description}} </p>
-  <h1> {{advert.startup}} </h1>
-  <deadline> Deadline: {{advert.deadline}} </deadline>
-  <p> Available positions: {{advert.available_positions}} </p>
-  <p> {{advert.startup.adress}} </p>
+<div class = "advert_wrapper">
+    <div class = "grid-container">
+        <div class = "item1">
+            <p> {{advert.description}} </p>
+        </div>
+        <div class = "item2">
+            <div class= "profile-image-container">
+                <img src="../..{% static advert.startup.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
+            </div>
+            <h1> {{advert.startup}} </h1>
+        </div>
+    </div>
+    <p> Available positions: {{advert.available_positions}} </p>
+    <deadline> Deadline: {{advert.deadline}} </deadline>
 </div>
-
-<div class="profile-image-container">
-    <img src="../..{% static advert.startup.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
-</div>
-
 
 {% endblock %}
