@@ -30,7 +30,7 @@ class TagTest(TestCase):
     def create_tag(self):
         return Tag.objects.create(title="Banking")
 
-    def test_tag_creation(self):
+    def test_tag_creation(self): #test_tag_creation
         w = self.create_tag()
         self.assertTrue(isinstance(w, Tag))
         self.assertEqual("Banking", w.title)

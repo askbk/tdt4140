@@ -14,3 +14,4 @@ class UserTest(TestCase):
         user_creation_form = UserCreationForm(data=pw_match)
         self.assertTrue(user_creation_form.is_valid())
 '''
+#Fjern meg
