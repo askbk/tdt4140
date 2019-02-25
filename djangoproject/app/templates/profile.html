@@ -4,12 +4,21 @@
 {% load app_tags %}
 
 {% block title %} {{ profile_user.first_name }} {{ profile_user.last_name }} | Momentum {% endblock %}
-{% block heading %} {{ profile_user.first_name }} {{ profile_user.last_name }} {% endblock %}
+{% block heading %}
+
+{{ profile_user.first_name  }} {{ profile_user.last_name }}
+
+<div class="profile-image-container">
+    <img src="../..{% static profile.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
+</div>
+{% endblock %}
 
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+<!-- Legger til kart-->
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+<!-- Legger til marker på kartet på riktig adresse-->
 {% if profile|to_class_name == "Startup" %}
 <script type="text/javascript">
     const address = "{{profile.address.street_address|a_to_a}} {{profile.address.city|a_to_a}} {{profile.address.postal_code}} {{profile.address.country|a_to_a}}",
@@ -28,6 +37,7 @@
   </div>
   {% endif %}
 
+<!-- Legger in bio og knappene-->
   <p> {{profile.bio}} </p>
   <div class="buttons">
     {% if profile_user.id == user.id %}
@@ -40,6 +50,7 @@
     {% endif %}
     {% endif %}
   </div>
+  <!-- Styler størrelsen på kartet som er nederst-->
   {% if profile|to_class_name == "Startup" %}
   <div id="map" style="width: 100%; height: 530px;"></div>
   {% endif %}
