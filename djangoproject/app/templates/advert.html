@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %} advert.title | Momentum {% endblock %}
 {% block heading %} {{ advert.title }} {% endblock %}
 
-{% block content %}
+{% block extra-stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'advert.css' %}">
+{% endblock %}
 
-<p> {{advert}} </p>
+{% block content %}
+<div class = "advert_wrapper">
+    <div class = "grid-container">
+        <div class = "item1">
+            <p> {{advert.description}} </p>
+        </div>
+        <div class = "item2">
+            <div class= "profile-image-container">
+                <img src="../..{% static advert.startup.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
+            </div>
+            <h1> {{advert.startup}} </h1>
+        </div>
+    </div>
+    <p> Available positions: {{advert.available_positions}} </p>
+    <deadline> Deadline: {{advert.deadline}} </deadline>
+</div>
 
 {% endblock %}

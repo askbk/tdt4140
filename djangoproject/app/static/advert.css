@@ -1,0 +1,27 @@
+deadline{
+    text-align: right;
+    font-style: italic;
+}
+.profile-image-container{
+    width: 120px;
+    height: 120px;
+    float: right;
+}
+.advert_wrapper{
+    width: 75%;
+    margin:auto;
+}
+.grid-container{
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 50px;
+}
+.item1 {
+    grid-column: 1/1;
+/*    padding-left: 30px; */
+    align-content: left;
+}
+.item2 {
+    grid-column: 2/2;
+    align-content: end;
+}
