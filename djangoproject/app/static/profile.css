@@ -1,7 +1,9 @@
-h1{
-  color: black;
+.startup_name_heading{
   text-align: center;
+  font-size: 90px;
 }
+
+
 h2{
   color: black;
   text-align: center;
@@ -17,13 +19,46 @@ h6{
   margin: auto;
 }
 
-.profile-image-container{
-  width: 120px;
-  height: 120px;
-  float: right;
+.circle {
+    border-radius: 50%;
+    float: left;
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    background: #FFA500;
+    /* text styling */
+    font-size: 30px;
+    width: 150px;
+    height: 150px;
+    color: #FFFD;  border: 2px solid #fff;
+    line-height: 140px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Arial;
 }
 
-.profile-image {
+
+/*.circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  line-height: 10px;
+  text-align: center;
+  background: #000
+}*/
+
+.profile-image-container{
+  width: 140px;
+  height: 140px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.element-image {
   width:100%;
   height:100%;
 }
