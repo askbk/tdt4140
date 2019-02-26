@@ -36,32 +36,25 @@
 
   <p> {{profile.bio}} </p>
   <hr class="mt-0 mb-4">
-
   <div class="circle">
       {{ profile.phase}}
   </div>
   <div class="circle">
-      {{ profile.tags.first }}{% if profile.tags.all|length != 1 %},
-          {{ profile.tags.last }}{% if profile.tags.all|length != 2 %}, ...
-          {% endif %}
-          {% endif  %}
+      {{ profile.employees}}
+      employees
   </div>
   <div class="circle">
       {{ profile.address.city }}
   </div>
-
-
-<!--  <ul class="element-list">
-      <li> Phase: {{ profile.phase}} </li>
-      <li> Tags: {{ profile.tags.first }}{% if profile.tags.all|length != 1 %},
-          {{ profile.tags.last }}{% if profile.tags.all|length != 2 %}, ...
+  <div class="supersquare">
+    <ul class="tags"style="list-style-type: none;">
+      <li style="list-style-type: none;"> {{ profile.tags.first }} <br />{% if profile.tags.all|length != 1 %}
+          {{ profile.tags.last }}{% if profile.tags.all|length != 2 %}
           {% endif %}
           {% endif  %}
-      </li>
-      <li> Employees: {{ profile.employees }} </li>
-      <li> Location: {{ profile.address.city }} </li>
-  </ul> -->
-  <hr class="mt-0 mb-4">
+      <li>
+    </ul>
+  </div>
 
   <div class="buttons">
     {% if profile_user.id == user.id %}
