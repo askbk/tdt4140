@@ -1,3 +1,4 @@
+/*
 deadline{
     text-align: right;
     font-style: italic;
@@ -18,10 +19,37 @@ deadline{
 }
 .item1 {
     grid-column: 1/1;
-/*    padding-left: 30px; */
     align-content: left;
 }
 .item2 {
     grid-column: 2/2;
     align-content: end;
 }
+*/
+/* FORSLAG MAGNUS */
+/*
+<div class = "advert-wrapper">
+    <div class= "advert-profile-container">
+        <img src="../..{% static advert.startup.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
+        <h1> {{advert.startup}} </h1>
+        <p> Available positions: {{advert.available_positions}} </p>
+        <deadline> Deadline: {{advert.deadline}} </deadline>
+    </div>
+    <p> {{advert.description}} </p>
+</div>
+.advert-wrapper {
+    width: 75%;
+    min-height: 500px;
+    margin: auto;
+    padding: 10px;
+}
+.advert-profile-container{
+    width: 225px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: gray;
+    float: right;
+    text-align: center;
+    color: white;
+}
+*/
