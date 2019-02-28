@@ -39,6 +39,7 @@ class Startup(models.Model):
     phase = models.ForeignKey(Phase, blank=True, default=1, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
     image = models.ImageField(upload_to='images/', default='images/no-image.png')
+    homepage = models.CharField(max_length=120)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet
         return self.user.first_name
