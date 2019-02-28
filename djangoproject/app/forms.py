@@ -14,7 +14,7 @@ class AddressForm(ModelForm):
 class StartupForm(ModelForm):
     class Meta:
         model = Startup
-        fields = ['bio', 'phase', 'tags', 'employees','user', 'image']
+        fields = ['bio', 'phase', 'tags', 'employees','user', 'homepage','image']
         widgets = {'tags': forms.CheckboxSelectMultiple()}
         exclude = ('user','address')
 
