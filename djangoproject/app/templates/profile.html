@@ -13,8 +13,10 @@
 
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+<!-- Legger til kart-->
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+<!-- Legger til marker på kartet på riktig adresse-->
 {% if profile|to_class_name == "Startup" %}
 <script type="text/javascript">
     const address = "{{profile.address.street_address|a_to_a}} {{profile.address.city|a_to_a}} {{profile.address.postal_code}} {{profile.address.country|a_to_a}}",
@@ -43,6 +45,7 @@
   {% if profile|to_class_name == "Startup" %}
   {% endif %}
 
+<!-- Legger in bio og knappene-->
   <p> {{profile.bio}} </p>
   <hr class="mt-0 mb-4">
   <div class="circle-container">

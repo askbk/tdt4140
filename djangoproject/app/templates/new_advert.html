@@ -15,3 +15,8 @@
     <button type="button" onclick="location.href='{% url 'index' %}';" class="red-button">Cancel</button>
 </form>
 {% endblock %}
+{% block extra-scripts %}
+<script>
+document.querySelector(".dateinput").type="date"
+</script>
+{% endblock %}

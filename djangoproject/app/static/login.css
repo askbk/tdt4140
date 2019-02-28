@@ -19,7 +19,3 @@ input[type=text], input[type=password], textarea, select {
   border: 1px solid darkgrey;
   border-radius: 3px;
 }
-textarea {
-	height:180px;
-	width: 99%;
-}

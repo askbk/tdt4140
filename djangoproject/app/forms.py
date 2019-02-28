@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from app.models import Address, Startup, Tag, Person, Advert
 from django.forms import ModelForm
+import datetime
 
 
 class AddressForm(ModelForm):
@@ -13,7 +14,7 @@ class AddressForm(ModelForm):
 class StartupForm(ModelForm):
     class Meta:
         model = Startup
-        fields = ['bio', 'phase', 'tags', 'employees','user', 'image']
+        fields = ['bio', 'phase', 'tags', 'employees','user', 'homepage','image']
         widgets = {'tags': forms.CheckboxSelectMultiple()}
         exclude = ('user','address')
 
@@ -66,6 +67,9 @@ class AdvertForm(ModelForm):
     class Meta:
         model = Advert
         fields = ['title', 'deadline', 'available_positions', 'description']
+        initial = {
+            'deadline': datetime.datetime.now().isoformat('T')[:10]
+        } # DETTE MÅ FIKSES
 
     def save(self, startup_id, commit=True):
         advert = super(AdvertForm, self).save(commit=False)
