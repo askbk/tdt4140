@@ -4,7 +4,7 @@ from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentTyp
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-from app.forms import StartupForm, AddressForm, RegisterForm, AdvertForm, PersonForm, UpdateForm
+from app.forms import StartupForm, AddressForm, RegisterForm, AdvertForm, PersonForm, UpdateForm, InvestorForm
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -227,7 +227,7 @@ def register_investor(request):
         HttpResponseRedirect('/profile/'+str(request.user.id))
     user_form = RegisterForm(request.POST)
     address_form = AddressForm(request.POST)
-    investor_form = StartupForm(request.POST, request.FILES)
+    investor_form = InvestorForm(request.POST, request.FILES)
     context = {
         'user_form': user_form,
         'address_form': address_form,
