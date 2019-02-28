@@ -4,19 +4,10 @@
 {% load app_tags %}
 
 {% block title %} {{ profile_user.first_name }} {{ profile_user.last_name }} | Momentum {% endblock %}
-<<<<<<< HEAD
-{% block heading %}
-
-{{ profile_user.first_name  }} {{ profile_user.last_name }}
-
-<div class="profile-image-container">
-    <img src="../..{% static profile.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
-=======
 
 {% block heading %}
 <div class="startup_name_heading">
 {{ profile_user.first_name }} {{ profile_user.last_name }}
->>>>>>> styling
 </div>
 {% endblock %}
 
@@ -82,12 +73,8 @@
     {% endif %}
     {% endif %}
   </div>
-<<<<<<< HEAD
-  <!-- Styler størrelsen på kartet som er nederst-->
-=======
 
   <h6> {{profile.address}} </h6>
->>>>>>> styling
   {% if profile|to_class_name == "Startup" %}
   <div id="map" style="width: 100%; height: 530px;"></div>
   {% endif %}
