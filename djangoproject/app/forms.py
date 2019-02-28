@@ -18,6 +18,13 @@ class StartupForm(ModelForm):
         widgets = {'tags': forms.CheckboxSelectMultiple()}
         exclude = ('user','address')
 
+class InvestorFrom(ModelForm):
+    class Meta:
+        model = Investor
+        fields ['bio','image']
+        widgets = {'tags': forms.CheckboxSelectMultiple()}
+        exclude = ('user','address')
+
 class PersonForm(ModelForm):
     class Meta:
         model = Person
