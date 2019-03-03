@@ -14,10 +14,10 @@
 {% block extra-stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
 <!-- Legger til kart-->
+{% if profile|to_class_name == "Startup" %}
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 <!-- Legger til marker på kartet på riktig adresse-->
-{% if profile|to_class_name == "Startup" %}
 <script type="text/javascript">
     const address = "{{profile.address.street_address|a_to_a}} {{profile.address.city|a_to_a}} {{profile.address.postal_code}} {{profile.address.country|a_to_a}}",
         popupText = "{{profile_user.first_name}} {{profile_user.last_name}}";
@@ -27,6 +27,7 @@
 {% endblock %}
 
 {% block content %}
+{% if profile|to_class_name == "Startup" %}
 
 <p class="profile-tags-list"><i>
   {% for tag in profile.tags.all %}
@@ -40,15 +41,14 @@
 <div class="profile-image-container">
     <img src="../..{% static profile.image.url %}" class="element-image"  alt="{{profile}} image can't load"/>
 </div>
-
+{% endif %}
 <div class="profile_wrapper">
-  {% if profile|to_class_name == "Startup" %}
-  {% endif %}
-
 <!-- Legger in bio og knappene-->
   <p> {{profile.bio}} </p>
+  {% if profile|to_class_name == "Startup" %}
   <a href="{{profile.homepage}}">Visit homepage<a/>
   <hr class="mt-0 mb-4">
+
   <div class="circle-container">
     <div class="circle">
         {{ profile.phase }}
@@ -61,6 +61,7 @@
         {{ profile.address.city }}
     </div>
   </div>
+  {% endif %}
 
 
   <div class="buttons">
@@ -75,8 +76,8 @@
     {% endif %}
   </div>
 
-  <h6> {{profile.address}} </h6>
   {% if profile|to_class_name == "Startup" %}
+  <h6> {{profile.address}} </h6>
   <div id="map" style="width: 100%; height: 530px;"></div>
   {% endif %}
 
