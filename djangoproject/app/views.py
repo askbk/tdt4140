@@ -255,7 +255,7 @@ def login_user(request):
         if user.is_superuser:
             return HttpResponseRedirect("/admin/")
         return HttpResponseRedirect('/profile/'+str(user.id)+"/")
-    return render(request, "login.html", {'wrongdetails': 1})
+    return render(request, "login.html", {'invalid': True})
 
 def logout_user(request):
     auth_logout(request)
