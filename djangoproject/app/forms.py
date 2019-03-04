@@ -4,12 +4,25 @@ from django.contrib.auth.models import User
 from app.models import Address, Startup, Tag, Person, Advert, Investor
 from django.forms import ModelForm
 import datetime
-
+#from formValidationApp.models import *
 
 class AddressForm(ModelForm):
     class Meta:
         model = Address
         fields = ['postal_code', 'city', 'street_address', 'country']
+        """
+        def clean(self):
+            super(AddressForm, self).clean()
+
+            postal_code = self.cleaned_data.get('postal_code')
+            city = self.cleaned_data.get('city')
+
+            if len(postal_code)<4:
+                self._errors['postal_code'] = self.error_class([
+                'Minimum 4 characters required'])
+
+            return self.cleaned_data
+        """
 
 class StartupForm(ModelForm):
     class Meta:
@@ -38,6 +51,14 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2', 'fullname', 'email')
+
+    def __init__(self, *args, **kwargs):
+
+        super(RegisterForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = True
+
+
+
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
