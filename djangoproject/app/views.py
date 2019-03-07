@@ -350,6 +350,6 @@ def investors(request):
 
     context = {
         'investors': investors,
-        'tags': tags,
+        'tags': tags
     }
     return render(request, "investors.html", context)
