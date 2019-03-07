@@ -10,19 +10,7 @@ class AddressForm(ModelForm):
     class Meta:
         model = Address
         fields = ['postal_code', 'city', 'street_address', 'country']
-        """
-        def clean(self):
-            super(AddressForm, self).clean()
 
-            postal_code = self.cleaned_data.get('postal_code')
-            city = self.cleaned_data.get('city')
-
-            if len(postal_code)<4:
-                self._errors['postal_code'] = self.error_class([
-                'Minimum 4 characters required'])
-
-            return self.cleaned_data
-        """
 
 class StartupForm(ModelForm):
     class Meta:

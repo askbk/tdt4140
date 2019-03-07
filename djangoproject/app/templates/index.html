@@ -2,15 +2,17 @@
 
 {% extends "base.html" %}
 {% load static %}
+{% block extra-stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="grid-container">
     {% for content in contents %} {# Her kjører den forløkke #}
     <div onclick="location.href='{% url 'content' content.id %}';" class="element-container item{{content.id}} content-item fp-element" data-tags="{{ content.type }}" style= 'background: white url("{% static content.image.url %}"); background-size: cover;' data-text="{{ content.type }} {{ content.title }} {{ content.author.first_name }} {{ content.author.last_name}}">
         <div class= blurry-box>
-
-          <p class="element-title bold">{{ content.type }}: {{ content.title|slice:":25" }}{% if content.title|length > 25 %}...{% endif %}</p>
-          <p> By: {{ content.author.first_name }} {{ content.author.last_name }} </p>
+          <p class="element-title bold">{{ content.title|slice:":25" }}{% if content.title|length > 25 %}...{% endif %}</p>
+          <span style="" class="content-type-marker">{{ content.type.title|slice:":1" }}</span>
         </div>
     </div>
     {% endfor %}
@@ -26,6 +28,7 @@
         <li>
           <input type="checkbox" class="filter-checkbox-type" id="{{ type }}" name="{{ type }}"/>
           <label for="{{ type }}"> {{ type }} </label>
+          <span style="" class="checkbox-type-letter">{{ type.title|slice:":1" }}</span>
         </li>
         {% endfor %}
         <br>

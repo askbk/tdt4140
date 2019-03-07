@@ -15,6 +15,9 @@
   {% csrf_token %}
     <input class="username-input" type="text" name="username"  placeholder="Username">
     <input class="password-input" type="password" name="password" placeholder="Password">
+    {% if invalid %}
+        <p style="color: black; font-size: 8;">Your username/password combo doesn't exist.</p>
+    {% endif %}
     <button type="submit" class="standard-button login-button">Login</button>
 		<button onclick="location.href='{% url 'register' %}'" type="button" class="standard-button login-button">Register </button>
 </form>
