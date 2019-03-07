@@ -10,19 +10,16 @@
     {% for investor in investors %}
     <div onclick="location.href='{% url 'profile' investor.user_id %}';" class="element-container item{{investor.id}} investor-item" data-tags="{{ investor.tagslist }} {{ investor.phase }}" data-text="{{ investor.tagslist }} {{ investor.phase }} {{ investor.user.first_name }} {{ investor.employees }} {{ investor.address.city }}">
         <div class="element-image-container">
-            <img src="..{% static investor.image.url %}" class="element-image"  alt="{{investor}} image can't load"/>
+            <img src="" class="element-image"  alt="{{investor}} image can't load"/>
         </div>
         <div>
             <p class="element-title bold">{{ investor.user.first_name }}</p>
             <ul class="element-list">
-                <li> Phase: {{ investor.phase }} </li>
                 <li> Tags: {{ investor.tags.first }}{% if investor.tags.all|length != 1 %},
                     {{ investor.tags.last }}{% if investor.tags.all|length != 2 %}, ...
                     {% endif %}
                     {% endif  %}
                 </li>
-                <li> Employees: {{ investor.employees }} </li>
-                <li> Location: {{ investor.address.city }} </li>
             </ul>
         </div>
     </div>
@@ -33,14 +30,6 @@
     </div>
     <div>
       <ul class="element-list">
-        <li> Phase: </li>
-        {% for phase in phases %}
-        <li>
-          <input type="checkbox" class="filter-checkbox-phase" id="{{ phase }}" name="{{ phase }}"/>
-          <label for="{{ phase }}"> {{ phase }} </label>
-        </li>
-        {% endfor %}
-        <br>
         <li> Tag: </li>
         {% for tag in tags %}
         <li>
