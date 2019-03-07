@@ -311,4 +311,18 @@ def new_advert(request):
     return render(request, 'new_advert.html', context)
 
 def investors(request):
-    return render(request, "investors.html")
+    investors = list(investor.objects.all())
+    tags = list(Tag.objects.all())
+
+    for investor in investors:
+        s_tags = list(investor.tags.all())
+        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        investor.tagslist = tagslist
+
+    phases = list(Phase.objects.all())
+    context = {
+        'investors': investors,
+        'phases': phases,
+        'tags': tags,
+    }
+    return render(request, "investors.html", context)
