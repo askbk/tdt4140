@@ -1,20 +1,28 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Address, Startup, Tag, Person, Advert
+from app.models import Address, Startup, Tag, Person, Advert, Investor
 from django.forms import ModelForm
 import datetime
-
+#from formValidationApp.models import *
 
 class AddressForm(ModelForm):
     class Meta:
         model = Address
         fields = ['postal_code', 'city', 'street_address', 'country']
 
+
 class StartupForm(ModelForm):
     class Meta:
         model = Startup
         fields = ['bio', 'phase', 'tags', 'employees','user', 'homepage','image']
+        widgets = {'tags': forms.CheckboxSelectMultiple()}
+        exclude = ('user','address')
+
+class InvestorForm(ModelForm):
+    class Meta:
+        model = Investor
+        fields = ['bio','tags','image']
         widgets = {'tags': forms.CheckboxSelectMultiple()}
         exclude = ('user','address')
 
@@ -31,6 +39,14 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2', 'fullname', 'email')
+
+    def __init__(self, *args, **kwargs):
+
+        super(RegisterForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = True
+
+
+
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
