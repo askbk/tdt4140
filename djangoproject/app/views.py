@@ -4,7 +4,7 @@ from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentTyp
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-from app.forms import StartupForm, AddressForm, RegisterForm, AdvertForm, PersonForm, UpdateForm
+from app.forms import StartupForm, AddressForm, RegisterForm, AdvertForm, PersonForm, UpdateForm, InvestorForm
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -125,6 +125,37 @@ def register_person(request):
             return HttpResponseRedirect('/profile/'+str(temp.user.id))
     return render(request, 'register_person.html',context)
 
+def register_investor(request):
+    if request.user.is_authenticated:
+        HttpResponseRedirect('/profile/'+str(request.user.id))
+    user_form = RegisterForm(request.POST)
+    address_form = AddressForm(request.POST)
+    investor_form = InvestorForm(request.POST, request.FILES)
+    context = {
+        'user_form': user_form,
+        'address_form': address_form,
+        'investor_form': investor_form,
+    }
+    if request.method == 'POST':
+        if user_form.is_valid() and investor_form.is_valid() and address_form.is_valid():
+            user_form.save()
+            temp = investor_form.save(commit=False)
+            temp.user = User.objects.latest('date_joined')
+            Group.objects.get(name='Investor').user_set.add(temp.user)
+            cleaned_info = address_form.cleaned_data
+            go = form_address_exists(cleaned_info)
+            if go == None:
+                address_form.save()
+                temp.address = Address.objects.all().order_by("-id")[0]
+            else:
+                temp.address = go
+            temp.save()
+            investor_form.save_m2m()
+            user = authenticate(username=user_form.cleaned_data["username"], password=user_form.cleaned_data["password1"])
+            auth_login(request, user)
+            return HttpResponseRedirect('/profile/'+str(temp.user.id))
+    return render(request, 'register_investor.html', context)
+
 @login_required
 def edit_profile(request):
     user = request.user
@@ -222,8 +253,6 @@ def edit_investor(request):
         return HttpResponseRedirect("/index/")
 
 
-def register_investor(request):
-    return render(request, 'index.html')
 
 
 def profile(request, id):
