@@ -1,0 +1,13 @@
+.content-type-marker, .checkbox-type-letter {
+    float: right;
+    background-color: #005b96;
+    border-radius: 50%;
+    padding: 0px 7px;
+}
+
+.content-type-marker {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 16px;
+}

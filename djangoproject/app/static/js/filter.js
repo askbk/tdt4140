@@ -42,7 +42,7 @@ export class Filter {
     //  hver filtreringsgruppe er tilstede.
     //  Sjekker så at alt fra freetext er tilstede i tittelen.
     handleItem(item) {
-        const tags = new Set(item.dataset.tags.split(" "));
+        const tags = new Set(item.dataset.tags.split("+"));
 
         if (this.DEBUG_MODE) {
             console.log("---\n item is tagged with");
