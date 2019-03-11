@@ -165,12 +165,18 @@ body {
     white-space: nowrap;
 }
 
+.tag-container {
+    position:absolute;
+    bottom:0;
+    padding: 8px 0px;
+}
+
 .Counseling {
     background-color: #007acc;
 }
 
 .Health {
-background-color: #006bb3;
+    background-color: #006bb3;
 }
 
 .Engineering {
@@ -178,11 +184,11 @@ background-color: #006bb3;
 }
 
 .Sales {
-background-color: #005b96;
+    background-color: #005b96;
 }
 
 .IT {
-background-color: #004d80;
+    background-color: #004d80;
 }
 
 .Customer {
