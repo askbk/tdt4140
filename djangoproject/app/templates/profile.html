@@ -79,6 +79,8 @@
                     {% else %}
                     :
                     {% endif %}
+                    <br>
+                    E-post: <b>{{ message.sender.email }}</b>
                 <p> {{ message.text }}</p>
     		</div>
         {% endfor %}
