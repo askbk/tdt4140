@@ -198,3 +198,8 @@ body {
 .Economics {
     background-color: #001f33;
 }
+
+.bottom {
+    bottom:0;
+    position:absolute;
+}
