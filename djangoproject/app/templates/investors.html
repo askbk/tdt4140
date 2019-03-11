@@ -14,13 +14,11 @@
         </div>
         <div>
             <p class="element-title bold">{{ investor.user.first_name }}</p>
-            <ul class="element-list">
-                <li> Tags: {{ investor.tags.first }}{% if investor.tags.all|length != 1 %},
-                    {{ investor.tags.last }}{% if investor.tags.all|length != 2 %}, ...
-                    {% endif %}
-                    {% endif  %}
-                </li>
-            </ul>
+            <div class="tag-container">
+                {% for tag in investor.taglist %}
+                <span class="tag-label {{ tag }}">{{ tag }}</span>
+                {% endfor %}
+            </div>
         </div>
     </div>
     {% endfor %}
@@ -33,8 +31,8 @@
         <li> Tag: </li>
         {% for tag in tags %}
         <li>
-          <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
-          <label for="{{ tag }}"> {{ tag }} </label>
+            <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
+            <label for="{{ tag }}" class="{{ tag }} tag-label"> {{ tag }} </label>
         </li>
         {% endfor %}
       </ul>
