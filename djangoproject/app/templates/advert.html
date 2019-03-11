@@ -17,7 +17,38 @@
         <h1> {{advert.startup}} </h1>
         <p> Available positions: {{advert.available_positions}} </p>
         <deadline> Deadline: {{advert.deadline}} </deadline>
+        {% if user.is_authenticated and advert.startup.user != user %}
+              <button class="standard-button" id="contact-button" style="margin:10px;"> Contact </button>
+        {% endif %}
+
     </div>
     <p> {{advert.description}} </p>
+    <div id="message-popup">
+        <form method="post">
+            {% csrf_token %}
+            <p> From <b>{{ user.first_name }} {{ user.last_name }}</b>: </p>
+            <textarea name="content" rows="4" cols="60"></textarea>
+            <button class="standard-button" type="submit" style="margin:10px;"> Send </button>
+            <button class="red-button" id="close-button" style="margin:10px;"> Close </button>
+        </form>
+    </div>
 </div>
+{% endblock %}
+
+{% block extra-scripts %}
+<script>
+var contactButton = document.getElementById("contact-button");
+var closeButton = document.getElementById("close-button");
+
+var messagePopup = document.querySelector("#message-popup");
+
+contactButton.onclick = function () {
+    messagePopup.style.display = "block";
+};
+closeButton.onclick = function () {
+    messagePopup.style.display = "none";
+};
+
+
+</script>
 {% endblock %}
