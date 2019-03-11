@@ -18,7 +18,7 @@
         <p> Available positions: {{advert.available_positions}} </p>
         <deadline> Deadline: {{advert.deadline}} </deadline>
         {% if user.is_authenticated and advert.startup.user != user %}
-              <button class="standard-button" id="contact-button" style="margin:10px;"> Contact </button>
+              <button class="standard-button" id="contact-button" style="margin:10px;"> Apply </button>
         {% endif %}
 
     </div>
