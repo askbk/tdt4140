@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType, Investor, Person
+from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType, Investor, Person, Investor
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
@@ -297,7 +297,7 @@ def startups(request):
 
     for startup in startups:
         s_tags = list(startup.tags.all())
-        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        tagslist = "+".join(list(map(lambda a: a.title, s_tags)))
         startup.tagslist = tagslist
 
     phases = list(Phase.objects.all())
@@ -317,7 +317,7 @@ def adverts(request):
 
     for advert in adverts:
         s_tags = list(advert.startup.tags.all())
-        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        tagslist = "+".join(list(map(lambda a: a.title, s_tags)))
         advert.startup.tagslist = tagslist
 
     context = {
@@ -340,4 +340,16 @@ def new_advert(request):
     return render(request, 'new_advert.html', context)
 
 def investors(request):
-    return render(request, "investors.html")
+    investors = list(Investor.objects.all())
+    tags = list(Tag.objects.all())
+
+    for investor in investors:
+        s_tags = list(investor.tags.all())
+        tagslist = "+".join(list(map(lambda a: a.title, s_tags)))
+        investor.tagslist = tagslist
+
+    context = {
+        'investors': investors,
+        'tags': tags
+    }
+    return render(request, "investors.html", context)
