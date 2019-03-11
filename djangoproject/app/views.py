@@ -297,7 +297,7 @@ def startups(request):
 
     for startup in startups:
         s_tags = list(startup.tags.all())
-        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        tagslist = "+".join(list(map(lambda a: a.title, s_tags)))
         startup.tagslist = tagslist
 
     phases = list(Phase.objects.all())
@@ -317,7 +317,7 @@ def adverts(request):
 
     for advert in adverts:
         s_tags = list(advert.startup.tags.all())
-        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        tagslist = "+".join(list(map(lambda a: a.title, s_tags)))
         advert.startup.tagslist = tagslist
 
     context = {
@@ -345,7 +345,7 @@ def investors(request):
 
     for investor in investors:
         s_tags = list(investor.tags.all())
-        tagslist = " ".join(list(map(lambda a: a.title, s_tags)))
+        tagslist = "+".join(list(map(lambda a: a.title, s_tags)))
         investor.tagslist = tagslist
 
     context = {
