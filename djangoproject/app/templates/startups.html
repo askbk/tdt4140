@@ -8,22 +8,13 @@
 {% block content %}
 <div class="grid-container">
     {% for startup in startups %}
-    <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="element-container item{{startup.id}} startup-item" data-tags="{{ startup.tagslist }} {{ startup.phase }}" data-text="{{ startup.tagslist }} {{ startup.phase }} {{ startup.user.first_name }} {{ startup.employees }} {{ startup.address.city }}">
+    <div onclick="location.href='{% url 'profile' startup.user_id %}';" class="fp-element element-container item{{startup.id}} startup-item" data-tags="{{ startup.tagstring }} {{ startup.phase }}" data-text="{{ startup.tagstring }} {{ startup.phase }} {{ startup.user.first_name }} {{ startup.employees }} {{ startup.address.city }}">
         <div class="element-image-container">
             <img src="..{% static startup.image.url %}" class="element-image"  alt="{{startup}} image can't load"/>
         </div>
         <div>
-            <p class="element-title bold">{{ startup.user.first_name }}</p>
-            <ul class="element-list">
-                <li> Phase: {{ startup.phase }} </li>
-                <li> Tags: {{ startup.tags.first }}{% if startup.tags.all|length != 1 %},
-                    {{ startup.tags.last }}{% if startup.tags.all|length != 2 %}, ...
-                    {% endif %}
-                    {% endif  %}
-                </li>
-                <li> Employees: {{ startup.employees }} </li>
-                <li> Location: {{ startup.address.city }} </li>
-            </ul>
+            <h3 class="element-title bold">{{ startup.user.first_name }}</h3>
+            <p class="bottom">{{ startup.address.city }}</p>
         </div>
     </div>
     {% endfor %}
@@ -44,8 +35,8 @@
         <li> Tag: </li>
         {% for tag in tags %}
         <li>
-          <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
-          <label for="{{ tag }}"> {{ tag }} </label>
+            <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
+            <label for="{{ tag }}"> {{ tag }} </label>
         </li>
         {% endfor %}
       </ul>

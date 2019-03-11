@@ -95,9 +95,9 @@ body {
 }
 
 .element-image {
-  width: 75px;
-  height: 75px;
-  border-radius: 100%;
+    width: 125px;
+    height: 125px;
+    border-radius: 100%;
 }
 
 .standard-button, .red-button {
@@ -140,7 +140,7 @@ body {
 }
 
 .fp-element {
-  height: 200px;
+  height: 140px;
 }
 
 .blurry-box{
@@ -156,4 +156,50 @@ body {
 }
 .blurry-box:hover {
   background-color: rgba(0,0,0,0.4);
+}
+
+.tag-label {
+    color: #efefef;
+    border-radius: 5px;
+    padding: 0px 7px;
+    white-space: nowrap;
+}
+
+.tag-container {
+    position:absolute;
+    bottom:0;
+    padding: 8px 0px;
+}
+
+.Counseling {
+    background-color: #007acc;
+}
+
+.Health {
+    background-color: #006bb3;
+}
+
+.Engineering {
+    background-color: #005c99;
+}
+
+.Sales {
+    background-color: #005b96;
+}
+
+.IT {
+    background-color: #004d80;
+}
+
+.Customer {
+    background-color: #003d66;
+}
+
+.Economics {
+    background-color: #001f33;
+}
+
+.bottom {
+    bottom:0;
+    position:absolute;
 }

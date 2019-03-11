@@ -8,19 +8,17 @@
 {% block content %}
 <div class="grid-container">
     {% for investor in investors %}
-    <div onclick="location.href='{% url 'profile' investor.user_id %}';" class="element-container item{{investor.id}} investor-item" data-tags="{{ investor.tagslist }}" data-text="{{ investor.tagslist }} {{ investor.bio }} {{ investor.user.first_name }} {{ investor.address.city }}">
+    <div onclick="location.href='{% url 'profile' investor.user_id %}';" class="fp-element element-container item{{investor.id}} investor-item" data-tags="{{ investor.tagslist }}" data-text="{{ investor.tagslist }} {{ investor.bio }} {{ investor.user.first_name }} {{ investor.address.city }}">
         <div class="element-image-container">
             <img src="{% static investor.image.url %}" class="element-image"  alt="{{investor}} image can't load"/>
         </div>
         <div>
-            <p class="element-title bold">{{ investor.user.first_name }}</p>
-            <ul class="element-list">
-                <li> Tags: {{ investor.tags.first }}{% if investor.tags.all|length != 1 %},
-                    {{ investor.tags.last }}{% if investor.tags.all|length != 2 %}, ...
-                    {% endif %}
-                    {% endif  %}
-                </li>
-            </ul>
+            <h3 class="element-title bold">{{ investor.user.first_name }}</h3>
+            <div class="tag-container" style="display:none;">
+                {% for tag in investor.taglist %}
+                <span class="tag-label {{ tag }}">{{ tag }}</span>
+                {% endfor %}
+            </div>
         </div>
     </div>
     {% endfor %}
@@ -33,8 +31,8 @@
         <li> Tag: </li>
         {% for tag in tags %}
         <li>
-          <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
-          <label for="{{ tag }}"> {{ tag }} </label>
+            <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
+            <label for="{{ tag }}"> {{ tag }} </label>
         </li>
         {% endfor %}
       </ul>

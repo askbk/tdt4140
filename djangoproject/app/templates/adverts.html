@@ -9,17 +9,15 @@
 
 <div class="grid-container">
   {% for advert in adverts %}
-  <div onclick="location.href='{% url 'advert' advert.id %}';" class="element-container item{{advert.id}} advert-item" data-tags="{{ advert.startup.address.city }} {{ advert.startup.tagslist }}" data-text="{{ advert.title }} {{ advert.startup }} {{ advert.startup.address.city }} {{ advert.startup.tagslist }}">
+  <div onclick="location.href='{% url 'advert' advert.id %}';" class="fp-element element-container item{{advert.id}} advert-item" data-tags="{{ advert.startup.address.city }} {{ advert.startup.tagslist }}" data-text="{{ advert.title }} {{ advert.startup }} {{ advert.startup.address.city }} {{ advert.startup.tagslist }}">
     <div class="element-image-container">
       <img src="{% static advert.startup.image.url %}" class="element-image"  alt="{{adverts.startup}} image can't load"/>
     </div>
     <div>
       <p class="element-title bold">{{ advert.title }}</p>
-      <ul class="element-list">
-        <li> Startup: {{ advert.startup }} </li>
-        <li> Location: {{ advert.startup.address.city }}</li>
-        <li> Deadline: {{ advert.deadline }} </li>
-        <li> {{ advert.available_positions }} available positions</li>
+      <ul class="element-list bottom" style="">
+        <li>{{ advert.startup }} </li>
+        <li>{{ advert.deadline }} </li>
       </ul>
     </div>
   </div>
