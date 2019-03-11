@@ -12,13 +12,9 @@
         <div class="element-image-container">
             <img src="..{% static startup.image.url %}" class="element-image"  alt="{{startup}} image can't load"/>
         </div>
-        <div style="">
-            <p class="element-title bold">{{ startup.user.first_name }}</p>
-            <div class="tag-container">
-                {% for tag in startup.taglist %}
-                <span class="tag-label {{ tag }}">{{ tag }}</span>
-                {% endfor %}
-            </div>
+        <div>
+            <h3 class="element-title bold">{{ startup.user.first_name }}</h3>
+            <p style="bottom:0;position:absolute;">{{ startup.address.city }}</p>
         </div>
     </div>
     {% endfor %}
@@ -40,7 +36,7 @@
         {% for tag in tags %}
         <li>
             <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
-            <label for="{{ tag }}" class="{{ tag }} tag-label"> {{ tag }} </label>
+            <label for="{{ tag }}"> {{ tag }} </label>
         </li>
         {% endfor %}
       </ul>
