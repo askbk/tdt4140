@@ -157,3 +157,38 @@ body {
 .blurry-box:hover {
   background-color: rgba(0,0,0,0.4);
 }
+
+.tag-label {
+    color: #efefef;
+    border-radius: 5px;
+    padding: 0px 7px;
+    white-space: nowrap;
+}
+
+.Counseling {
+    background-color: #007acc;
+}
+
+.Health {
+background-color: #006bb3;
+}
+
+.Engineering {
+    background-color: #005c99;
+}
+
+.Sales {
+background-color: #005b96;
+}
+
+.IT {
+background-color: #004d80;
+}
+
+.Customer {
+    background-color: #003d66;
+}
+
+.Economics {
+    background-color: #001f33;
+}
