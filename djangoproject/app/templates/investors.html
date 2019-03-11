@@ -13,8 +13,8 @@
             <img src="{% static investor.image.url %}" class="element-image"  alt="{{investor}} image can't load"/>
         </div>
         <div>
-            <p class="element-title bold">{{ investor.user.first_name }}</p>
-            <div class="tag-container">
+            <h3 class="element-title bold">{{ investor.user.first_name }}</h3>
+            <div class="tag-container" style="display:none;">
                 {% for tag in investor.taglist %}
                 <span class="tag-label {{ tag }}">{{ tag }}</span>
                 {% endfor %}
@@ -32,7 +32,7 @@
         {% for tag in tags %}
         <li>
             <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
-            <label for="{{ tag }}" class="{{ tag }} tag-label"> {{ tag }} </label>
+            <label for="{{ tag }}"> {{ tag }} </label>
         </li>
         {% endfor %}
       </ul>
