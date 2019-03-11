@@ -14,7 +14,7 @@
         </div>
         <div style="">
             <p class="element-title bold">{{ startup.user.first_name }}</p>
-            <div style="position:absolute;bottom:0;padding: 8px 0px;">
+            <div class="tag-container">
                 {% for tag in startup.taglist %}
                 <span class="tag-label {{ tag }}">{{ tag }}</span>
                 {% endfor %}
@@ -39,8 +39,8 @@
         <li> Tag: </li>
         {% for tag in tags %}
         <li>
-          <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
-          <label for="{{ tag }}"> {{ tag }} </label>
+            <input type="checkbox" class="filter-checkbox-tags" id="{{ tag }}" name="{{ tag }}"/>
+            <label for="{{ tag }}" class="{{ tag }} tag-label"> {{ tag }} </label>
         </li>
         {% endfor %}
       </ul>
