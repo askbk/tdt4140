@@ -50,9 +50,15 @@ def content(request, id):
 
 def advert(request, id): #Se urls.py for å se når denne aktiveres
     advert = get_object_or_404(Advert, id=id)
+    advert_user = advert.startup.user;
     context = { #Hvilke variabler vil vi sende til html-dokumentet?
         'advert': advert
     }
+    if request.method == 'POST' and request.user.is_authenticated:
+        sender = request.user;
+        reciever = advert_user;
+        content = request.POST['content'];
+        Message.objects.create(sender=sender, reciever=reciever, text=content, advert=advert);
     return render(request, 'advert.html', context) #sender besøkende til html-dokumentet
 
 
