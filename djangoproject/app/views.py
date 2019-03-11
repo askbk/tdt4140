@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType, Investor, Person
+from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType, Investor, Person, Message
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
@@ -256,23 +256,40 @@ def edit_investor(request):
 
 
 def profile(request, id):
-    user = User.objects.get(id=id)
-    if user.groups.filter(name='Startup').exists():
+    profile_user = User.objects.get(id=id)
+    if request.user == profile_user:
+        messages = Message.objects.filter(reciever_id = request.user);
+    else:
+        messages = None;
+    if profile_user.groups.filter(name='Startup').exists():
         profile = Startup.objects.get(user_id=id)
-    elif user.groups.filter(name="Person").exists():
+    elif profile_user.groups.filter(name="Person").exists():
         profile = Person.objects.get(user_id=id)
-    elif user.groups.filter(name="Investor").exists():
+    elif profile_user.groups.filter(name="Investor").exists():
         profile = Investor.objects.get(user_id=id)
     # elif user.is_superuser:
     #     return HttpResponseRedirect('/admin/')
     else:
         profile = ""
     context = {
-        'profile_user': user, #user objekt til den profilen du besøker
+        'profile_user': profile_user, #user objekt til den profilen du besøker
         'profile': profile, #Startup/Investor/Person objekt
+        'messages': messages
     }
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        sender = request.user;
+        reciever = profile_user;
+        content = request.POST['content'];
+        Message.objects.create(sender=sender, reciever=reciever, text=content);
     return render(request, 'profile.html', context)
 
+@login_required
+def delete_message(request, id):
+    message = Message.objects.get(id=id);
+    reciever = message.reciever;
+    message.delete();
+    return HttpResponseRedirect('/profile/'+str(reciever.id)+"/")
 
 def login_user(request):
     username = request.POST['username']
