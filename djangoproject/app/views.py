@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType, Investor, Person, Message
+from app.models import Advert, Startup, Tag, Phase, Address, Content, ContentType, Investor, Person
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
@@ -54,11 +54,7 @@ def advert(request, id): #Se urls.py for å se når denne aktiveres
     context = { #Hvilke variabler vil vi sende til html-dokumentet?
         'advert': advert
     }
-    if request.method == 'POST' and request.user.is_authenticated:
-        sender = request.user;
-        reciever = advert_user;
-        content = request.POST['content'];
-        Message.objects.create(sender=sender, reciever=reciever, text=content, advert=advert);
+
     return render(request, 'advert.html', context) #sender besøkende til html-dokumentet
 
 
@@ -283,19 +279,7 @@ def profile(request, id):
         'messages': messages
     }
 
-    if request.method == 'POST' and request.user.is_authenticated:
-        sender = request.user;
-        reciever = profile_user;
-        content = request.POST['content'];
-        Message.objects.create(sender=sender, reciever=reciever, text=content);
     return render(request, 'profile.html', context)
-
-@login_required
-def delete_message(request, id):
-    message = Message.objects.get(id=id);
-    reciever = message.reciever;
-    message.delete();
-    return HttpResponseRedirect('/profile/'+str(reciever.id)+"/")
 
 def login_user(request):
     username = request.POST['username']
