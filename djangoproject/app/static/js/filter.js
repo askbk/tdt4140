@@ -1,12 +1,34 @@
+/*
+*   Klasse for å filtrere elementer.
+*
+*   Fritekst-søket baserer seg på innholdet i "data-text"-attributtet til
+*   elementene, sjekkboks-tags baserer seg på innholdet i
+*   "data-tags"-attributtet til elementene.
+*
+*   Filteret baserer seg på følgende logikk:
+*       - Filtreringskriterier er delt opp i "grupper":
+*           - Kan f.eks. være sjekkbokser som alle handler om by
+*       - Dersom en gruppe ikke er aktiv, blir den ikke tatt hensyn til i filtreringen
+*           - F.eks. er en gruppe sjekkbokser inaktive dersom ingen av dem er huket av
+*       - Et element vises dersom følgende er sant:
+*           - "data-text" inneholder alle ord som er skrevet i søkeføltet
+*           - "data-tags" inneholder minst én av tagsene som er huket av per gruppe
+*/
+
 export class Filter {
     constructor(DEBUG_MODE, itemSelector, filterCheckboxSelectors, searchBoxSelector) {
         this.DEBUG_MODE = DEBUG_MODE;
-        //  Velger alle elementer som skal filtreres blant
+
+        //  Elementer som skal filtreres blant
         this.items = document.getElementsByClassName(itemSelector);
+
+        //  Array med klassenavn for hver sjekkboks-gruppe
         this.filterCheckboxSelectors = filterCheckboxSelectors;
+
+        //  Søkefeltet
         this.searchBox = document.getElementById(searchBoxSelector);
 
-        //  Alle gruppene med filter som skal brukes
+        //  Array som inneholder array av sjekkboksgrupper
         this.filterCheckboxGroups = [];
         for (let selector of filterCheckboxSelectors) {
             this.filterCheckboxGroups.push(
