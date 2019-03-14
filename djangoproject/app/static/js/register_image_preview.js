@@ -1,4 +1,3 @@
-document.getElementById("preview-image").style.display = "block";
 document.getElementById("id_image").onchange = function() {
     const reader = new FileReader();
 

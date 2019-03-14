@@ -137,6 +137,7 @@ body {
   position: absolute;
   bottom: 65px;
   left: 400px;
+  display: block;
 }
 
 .fp-element {
