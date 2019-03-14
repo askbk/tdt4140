@@ -2,25 +2,59 @@
 
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-
-{% block title %} Register Startup | Momentum {% endblock %}
-{% block heading %} Register your Startup {% endblock %}
+{% load static%}
+{% block title %} Register Investor | Momentum {% endblock %}
+{% block heading %} Create your investor profile{% endblock %}
+{% block extra-stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'register_form.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<form method="post" enctype="multipart/form-data" class="register-form">
+  <form method="post" enctype="multipart/form-data" class="register-form">
+    {% csrf_token %}
 
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+          {{ user_form.username|as_crispy_field }}
+          {{ user_form.email|as_crispy_field }}
+        </div>
+      <div class="form-group col-md-6 mb-0">
+          {{ user_form.fullname|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
 
-  {% csrf_token %}
-  {{ user_form|crispy }}
-  {{ address_form|crispy }}
-  {{ startup_form|crispy }}
-  <img id="preview-image" />
-  <button class="standard-button" type="submit"> Submit </button>
-  <button type="button" onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</button>
-</form>
+          {{ user_form.password1|as_crispy_field }}
+        </div>
+      <div class="form-group col-md-6 mb-0">
+
+          {{ user_form.password2|as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+
+        {{ address_form.street_address|as_crispy_field }}
+        {{ address_form.country|as_crispy_field }}
+        </div>
+        <div>
+          {{ address_form.postal_code|as_crispy_field }}
+        </div>
+        <div>
+          {{ address_form.city|as_crispy_field }}
+        </div>
+    </div>
+
+    {{ startup_form|crispy }}
+    <img id="preview-image" />
+    <button class="standard-button" type="submit"> Submit </button>
+    <button type="button" onclick="location.href='{% url 'login' %}';" class="red-button">Cancel</button>
+  </form>
 {% endblock %}
 
 {% block extra-scripts %}
-<script src="/static/js/register_startup.js" charset="utf-8"></script>
+<script src="/static/js/register_investor.js" charset="utf-8"></script>
 {% endblock %}
