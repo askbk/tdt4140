@@ -49,7 +49,6 @@ class Person(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True, null=True)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to='images/', default='images/no-image.png')
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self): #toString-metode, tittelen printes hvis man printer objektet

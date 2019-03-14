@@ -24,6 +24,4 @@ urlpatterns = [
     path('edit_startup/', views.edit_startup, name="edit_startup"),
     path('edit_person/', views.edit_person, name="edit_person"),
     path('edit_investor/', views.edit_investor, name="edit_investor"),
-
-
 ]

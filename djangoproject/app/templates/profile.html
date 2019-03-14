@@ -27,6 +27,7 @@
 {% endblock %}
 
 {% block content %}
+
 {% if profile|to_class_name == "Startup" %}
 
 <p class="profile-tags-list"><i>
@@ -46,7 +47,7 @@
 <!-- Legger in bio og knappene-->
   <p> {{profile.bio}} </p>
   {% if profile|to_class_name == "Startup" %}
-  <a href="https://{{profile.homepage}}">Visit homepage<a/>
+  <a href="https://{{profile.homepage}}">https://{{profile.homepage}}</a>
   <hr class="mt-0 mb-4">
 
   <div class="circle-container">
@@ -63,17 +64,50 @@
   </div>
   {% endif %}
 
+  {% if messages.all %}
+  <div class="message-container">
+      <h1> Messages </h1>
+        {% for message in messages %}
+            {% if not forloop.first %}
+            <hr>
+            {% endif %}
+    		<div class="message">
+    			<form method="post">{% csrf_token %}<input class="standard-button" type="submit" value="Mark as read" formaction="{% url 'delete_message' message.id %}"></form>
+    			<p> From <b> {{ message.sender.first_name }} {{ message.sender.last_name }} </b>
+                    {% if message.advert %}
+                        on <b>{{ message.advert }}</b>:</p>
+                    {% else %}
+                    :
+                    {% endif %}
+                    <br>
+                    E-post: <b>{{ message.sender.email }}</b>
+                <p> {{ message.text }}</p>
+    		</div>
+        {% endfor %}
+	</div>
+  {% endif %}
+
 
   <div class="buttons">
     {% if profile_user.id == user.id %}
-    <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Logout</button>
-    {% if not profile_user.is_superuser %}
-    <button class="standard-button" onclick="location.href='{% url 'edit_profile' %}';" style="margin:10px;">Edit profile  </button>
+      <button class="standard-button" onclick="location.href='{% url 'logout_user' %}';" style="margin:10px;">Logout</button>
+      {% if not profile_user.is_superuser %}
+        <button class="standard-button" onclick="location.href='{% url 'edit_profile' %}';" style="margin:10px;">Edit profile  </button>
+      {% endif %}
+      {% if profile|to_class_name == "Startup" %}
+        <button class="standard-button" onclick="location.href='{% url 'new_advert' %}';" style="margin:10px;">Add advert </button>
+      {% endif %}
+    {% elif user.is_authenticated %}
+        <button class="standard-button" id="contact-button" style="margin:10px;"> Contact </button>
     {% endif %}
-    {% if profile|to_class_name == "Startup" %}
-    <button class="standard-button" onclick="location.href='{% url 'new_advert' %}';" style="margin:10px;">Add advert </button>
-    {% endif %}
-    {% endif %}
+  </div>
+  <div id="message-popup">
+      <div>
+          <p> From <b>{{ user.first_name }} {{ user.last_name }}</b>: </p>
+          <textarea required id="message-content" rows="4" cols="60"></textarea>
+          <button class="standard-button" id="submit-button" style="margin:10px;"> Send </button>
+          <button class="red-button" id="close-button" style="margin:10px;"> Close </button>
+      </div>
   </div>
 
   {% if profile|to_class_name == "Startup" %}
@@ -83,6 +117,54 @@
 
 </div>
 
+<div id="background-blur"></div>
 
+<div id="response-message">
+    <div>
+      <h5> Mail sent </h5>
+      <br>
+      <p> <b>E-mail:</b> {{user.email}}  </p>
+      <b>Message: </b>
+      <p id="response-text"> </p>
+      <button class="red-button" id="close-response-button" style="margin:10px;"> Close </button>
+    </div>
+</div>
 
+{% endblock %}
+
+{% block extra-scripts %}
+<script>
+var contactButton = document.getElementById("contact-button");
+var closeButton = document.getElementById("close-button");
+var submitButton = document.getElementById("submit-button");
+var messageContent = document.getElementById("message-content");
+
+var backgroundBlur = document.getElementById("background-blur");
+var responseMessage = document.getElementById("response-message");
+var closeResponseButton = document.getElementById("close-response-button");
+var responseText = document.getElementById("response-text");
+
+var messagePopup = document.querySelector("#message-popup");
+
+contactButton.onclick = function () {
+    messagePopup.style.display = "block";
+    backgroundBlur.style.display = "block";
+};
+closeButton.onclick = function () {
+    messagePopup.style.display = "none";
+    backgroundBlur.style.display = "none";
+};
+submitButton.onclick = function () {
+    messagePopup.style.display = "none";
+    responseMessage.style.display = "block";
+    responseText.innerText = messageContent.value;
+    messageContent.value = "";
+};
+
+closeResponseButton.onclick = function () {
+    responseMessage.style.display = "none";
+    backgroundBlur.style.display = "none";
+}
+
+</script>
 {% endblock %}

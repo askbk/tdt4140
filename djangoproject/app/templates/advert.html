@@ -17,7 +17,68 @@
         <h1> {{advert.startup}} </h1>
         <p> Available positions: {{advert.available_positions}} </p>
         <deadline> Deadline: {{advert.deadline}} </deadline>
+        {% if user.is_authenticated and advert.startup.user != user %}
+              <button class="standard-button" id="contact-button" style="margin:10px;"> Apply </button>
+        {% endif %}
+
     </div>
     <p> {{advert.description}} </p>
+    <div id="message-popup">
+        <div>
+            <p> From <b>{{ user.first_name }} {{ user.last_name }}</b> on <b>{{advert.title}}</b>: </p>
+            <textarea required id="message-content" rows="4" cols="60"></textarea>
+            <button class="standard-button" id="submit-button" style="margin:10px;"> Send </button>
+            <button class="red-button" id="close-button" style="margin:10px;"> Close </button>
+        </div>
+    </div>
 </div>
+<div id="background-blur"></div>
+
+<div id="response-message">
+    <div>
+      <h5> Mail sent </h5>
+      <br>
+      <p> <b>E-mail:</b> {{user.email}}  </p>
+      <b>Message: </b>
+      <p id="response-text"> </p>
+      <button class="red-button" id="close-response-button" style="margin:10px;"> Close </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra-scripts %}
+<script>
+var contactButton = document.getElementById("contact-button");
+var closeButton = document.getElementById("close-button");
+var submitButton = document.getElementById("submit-button");
+var messageContent = document.getElementById("message-content");
+
+var backgroundBlur = document.getElementById("background-blur");
+var responseMessage = document.getElementById("response-message");
+var closeResponseButton = document.getElementById("close-response-button");
+var responseText = document.getElementById("response-text");
+
+var messagePopup = document.querySelector("#message-popup");
+
+contactButton.onclick = function () {
+    messagePopup.style.display = "block";
+    backgroundBlur.style.display = "block";
+};
+closeButton.onclick = function () {
+    messagePopup.style.display = "none";
+    backgroundBlur.style.display = "none";
+};
+submitButton.onclick = function () {
+    messagePopup.style.display = "none";
+    responseMessage.style.display = "block";
+    responseText.innerText = messageContent.value;
+    messageContent.value = "";
+};
+
+closeResponseButton.onclick = function () {
+    responseMessage.style.display = "none";
+    backgroundBlur.style.display = "none";
+}
+
+</script>
 {% endblock %}
