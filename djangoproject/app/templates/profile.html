@@ -29,7 +29,7 @@
 {% block content %}
 
 {% if profile|to_class_name == "Startup" %}
-
+<br>
 <p class="profile-tags-list"><i>
   {% for tag in profile.tags.all %}
   {% if forloop.first %}
@@ -63,30 +63,6 @@
     </div>
   </div>
   {% endif %}
-
-  {% if messages.all %}
-  <div class="message-container">
-      <h1> Messages </h1>
-        {% for message in messages %}
-            {% if not forloop.first %}
-            <hr>
-            {% endif %}
-    		<div class="message">
-    			<form method="post">{% csrf_token %}<input class="standard-button" type="submit" value="Mark as read" formaction="{% url 'delete_message' message.id %}"></form>
-    			<p> From <b> {{ message.sender.first_name }} {{ message.sender.last_name }} </b>
-                    {% if message.advert %}
-                        on <b>{{ message.advert }}</b>:</p>
-                    {% else %}
-                    :
-                    {% endif %}
-                    <br>
-                    E-post: <b>{{ message.sender.email }}</b>
-                <p> {{ message.text }}</p>
-    		</div>
-        {% endfor %}
-	</div>
-  {% endif %}
-
 
   <div class="buttons">
     {% if profile_user.id == user.id %}

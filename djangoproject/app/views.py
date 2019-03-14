@@ -259,10 +259,7 @@ def edit_investor(request):
 
 def profile(request, id):
     profile_user = User.objects.get(id=id)
-    if request.user == profile_user:
-        messages = Message.objects.filter(reciever_id = request.user);
-    else:
-        messages = None;
+
     if profile_user.groups.filter(name='Startup').exists():
         profile = Startup.objects.get(user_id=id)
     elif profile_user.groups.filter(name="Person").exists():
@@ -276,7 +273,6 @@ def profile(request, id):
     context = {
         'profile_user': profile_user, #user objekt til den profilen du besøker
         'profile': profile, #Startup/Investor/Person objekt
-        'messages': messages
     }
 
     return render(request, 'profile.html', context)
