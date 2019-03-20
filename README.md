@@ -3,15 +3,16 @@
 2. Last ned nyeste versjon av python på www.python.org  
 3. Installer nyeste versjon av python med pip i en terminal  
 4. cmd: pip install Django  
-5. cmd: pip install Pillow  
-6. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.
-7. Last ned Microsoft Visual Studio https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
-8. Velg Visual C++ build tools fra workloads
-9. Velg Windows 10 SDK og fjern avkrysning på de andre alternativene
-10. Last ned wheel hvis nødvendig med pip install.
-11. Finn lokasjonen til mysqlfilen og installer den med pip/wheel. Hvis du får problemer her kan du først forsøke å oppdatere pip og sjekke om du faktisk har installert wheel. Får du en feilmelding som sier at filen ikke støttes på denne plattformen, har du valgt feil mysqlclient-fil. Gå tilbake til steg 6 for å løse dette.
-12. cmd: lokaliser mappen du klonet prosjektet til og gå inn i djangoframe
-13. cmd: python manage.py runserver
+5. cmd: pip install Pillow
+6. cmd: pip install django-crispy-forms
+7. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.
+8. Last ned Microsoft Visual Studio https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
+9. Velg Visual C++ build tools fra workloads
+10. Velg Windows 10 SDK og fjern avkrysning på de andre alternativene
+11. Last ned wheel hvis nødvendig med pip install.
+12. Finn lokasjonen til mysqlfilen og installer den med pip/wheel. Hvis du får problemer her kan du først forsøke å oppdatere pip og sjekke om du faktisk har installert wheel. Får du en feilmelding som sier at filen ikke støttes på denne plattformen, har du valgt feil mysqlclient-fil. Gå tilbake til steg 6 for å løse dette.
+13. cmd: lokaliser mappen du klonet prosjektet til og gå inn i djangoframe
+14. cmd: python manage.py runserver
 Serveren kjører på localhost:8000
   
 **Nullstille database:**
