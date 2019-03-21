@@ -11,16 +11,16 @@ I prosjektet har vi brukt HTML, CSS og JavaScript til front-end, i tillegg til c
 Til back-end er det brukt django. Du finner mer detaljert informasjon om bruk av django på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
   
 # Screenshots
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="500">
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/forside.PNG" width="500">
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/startups.PNG" width="500">
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/adgogo.PNG" width="500">  
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="450">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/forside.PNG" width="450">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/startups.PNG" width="450">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/adgogo.PNG" width="450">  
   
 
-**Bilde øverst til venstre**: Forside del 1  
-**Bilde øverst til høyre**: Forside del 2  
-**Bilde nederst til venstre**: Oversiktside over startups  
-**Bilde nederst til høyre**: Eksempel profilside for startup  
+**Bilde 1**: Forside del 1  
+**Bilde 2**: Forside del 2  
+**Bilde 3**: Oversiktside over startups  
+**Bilde 4**: Eksempel profilside for startup  
 
 # Installasjon
 
