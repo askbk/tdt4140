@@ -1,3 +1,13 @@
+# Gruppe 35 - Momentum  
+  
+Dette prosjektet er laget i samarbeid med den falske kunden Momentum. Vi fikk i oppdrag å lage en plattform der startups, investorer og enkeltpersoner skal kunne registrere seg, finne hverandre og ta kontakt med hverandre.
+  
+# Motivasjon
+
+Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
+
+# Installasjon
+
 **Installer prosjektet:**  
 1. cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`
 2. Last ned nyeste versjon av python på https://www.python.org/downloads/. Sørg for at python legges til i path under installasjonen.
@@ -17,9 +27,8 @@ Serveren kjører på localhost:8000
 
 **NB**: Databasen ligger på NTNU sine servere, og man må derfor være koblet på NTNU-nettet eller VPN for å kunne kjøre prosjektet  
 **NB2**: For å benytte deg av sidens fulle funksjonalitet, kan ikke AdBlock e.l. være aktivert i nettleseren din  
-  
-**Teste prosjektet:**
-1. Kjør: `python manage.py test`
+
+# Vedlikehold
 
 **Nullstille database:**
 1. cmd: `cd <mappen du klonet prosjektet i>/djangoframe`
@@ -38,5 +47,6 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 1. cmd: `cd <mappen du klonet prosjektet i>/djangoframe`
 2. cmd: `python manage.py createsuperuser`
 3. skriv inn brukernavn og passord når cmd spør om det
-
-
+  
+# Testing  
+Kjør: `python manage.py test`
