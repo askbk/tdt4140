@@ -60,5 +60,8 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 2. cmd: `python manage.py createsuperuser`
 3. skriv inn brukernavn og passord når cmd spør om det
   
-# Testing  
-Kjør: `python manage.py test`
+
+# Testing
+
+Alle unit-testene kjøres med følgende kommando  
+cmd: `python manage.py test`
