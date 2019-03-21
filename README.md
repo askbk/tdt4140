@@ -6,8 +6,18 @@ Dette prosjektet er laget i samarbeid med den falske kunden Momentum. Vi fikk i 
 
 Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
   
-# Screenshots  
-    
+# Screenshots
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="500">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/forside.PNG" width="500">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/startups.PNG" width="500">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/adgogo.PNG" width="500">  
+  
+
+**Bilde øverst til venstre**: Forside del 1  
+**Bilde øverst til høyre**: Forside del 2  
+**Bilde nederst til venstre**: Oversiktside over startups  
+**Bilde nederst til høyre**: Eksempel profilside for startup  
+
 # Installasjon
 
 **Installer prosjektet:**  
