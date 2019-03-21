@@ -1,13 +1,27 @@
 # Gruppe 35 - Momentum  
   
-Dette prosjektet er laget i samarbeid med den falske kunden Momentum. Vi fikk i oppdrag å lage en plattform der startups, investorer og enkeltpersoner skal kunne registrere seg, finne hverandre og ta kontakt med hverandre.
+Dette prosjektet er laget i samarbeid med kunden Momentum. Vi fikk i oppdrag å lage en plattform der startups, investorer og enkeltpersoner skal kunne registrere seg, finne hverandre og ta kontakt med hverandre.
   
 # Motivasjon
 
 Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
   
-# Screenshots  
-    
+# Teknologier og rammeverk  
+I prosjektet har vi brukt HTML, CSS og JavaScript til front-end, i tillegg til crispy-forms bootstrap for skjemaer.  
+Til back-end er det brukt django. Du finner mer detaljert informasjon om bruk av django på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
+  
+# Screenshots
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="400">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/forside.PNG" width="400">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/startups.PNG" width="400">
+<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/adgogo.PNG" width="400">  
+  
+
+**Bilde 1**: Forside del 1  
+**Bilde 2**: Forside del 2  
+**Bilde 3**: Oversiktside over startups  
+**Bilde 4**: Eksempel profilside for startup  
+
 # Installasjon
 
 **Installer prosjektet:**  
@@ -17,7 +31,8 @@ Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling.
 4. cmd: `pip install Django`
 5. cmd: `pip install Pillow`
 6. cmd: `pip install django-crispy-forms`
-7. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.
+7. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.  
+**NB:** Viktig å velge riktig version. Hvis du for eksempel kjører python 3.7.2 på windows 64-bits, så vil det stå 3.7 et sted i navnet på filen.
 8. Last ned Microsoft Visual Studio https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
 9. Velg Visual C++ build tools fra workloads
 10. Velg Windows 10 SDK og fjern avkrysning på de andre alternativene
@@ -50,5 +65,8 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 2. cmd: `python manage.py createsuperuser`
 3. skriv inn brukernavn og passord når cmd spør om det
   
-# Testing  
-Kjør: `python manage.py test`
+
+# Testing
+
+Alle unit-testene kjøres med følgende kommando  
+cmd: `python manage.py test`
