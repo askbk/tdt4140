@@ -1,5 +1,5 @@
 **Installer prosjektet:**  
-1. cmd: git@gitlab.stud.idi.ntnu.no:programvareutvikling-v19/gruppe-35.git
+1. cmd: git clone git@gitlab.stud.idi.ntnu.no:programvareutvikling-v19/gruppe-35.git
 2. Last ned nyeste versjon av python på www.python.org  
 3. Installer nyeste versjon av python med pip i en terminal  
 4. cmd: pip install Django  
