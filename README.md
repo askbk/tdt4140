@@ -1,6 +1,6 @@
 # Gruppe 35 - Momentum  
   
-Dette prosjektet er laget i samarbeid med den falske kunden Momentum. Vi fikk i oppdrag å lage en plattform der startups, investorer og enkeltpersoner skal kunne registrere seg, finne hverandre og ta kontakt med hverandre.
+Dette prosjektet er laget i samarbeid med kunden Momentum. Vi fikk i oppdrag å lage en plattform der startups, investorer og enkeltpersoner skal kunne registrere seg, finne hverandre og ta kontakt med hverandre.
   
 # Motivasjon
 
