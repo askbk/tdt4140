@@ -51,8 +51,11 @@ def content(request, id):
 def advert(request, id): #Se urls.py for å se når denne aktiveres
     advert = get_object_or_404(Advert, id=id)
     advert_user = advert.startup.user;
+    person = Person.objects.filter(user_id = request.user.id).exists()
+
     context = { #Hvilke variabler vil vi sende til html-dokumentet?
-        'advert': advert
+        'advert': advert,
+        'person': person,
     }
 
     return render(request, 'advert.html', context) #sender besøkende til html-dokumentet
