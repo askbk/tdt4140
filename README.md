@@ -6,6 +6,10 @@ Dette prosjektet er laget i samarbeid med den falske kunden Momentum. Vi fikk i 
 
 Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
   
+# Teknologier og rammeverk  
+I prosjektet har vi brukt HTML, CSS og JavaScript til front-end, i tillegg til crispy-forms bootstrap for skjemaer.  
+Til back-end er det brukt django. Du finner mer detaljert informasjon om bruk av django på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
+  
 # Screenshots
 <img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="500">
 <img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/forside.PNG" width="500">
