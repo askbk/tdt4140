@@ -5,7 +5,9 @@ Dette prosjektet er laget i samarbeid med den falske kunden Momentum. Vi fikk i 
 # Motivasjon
 
 Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
-
+  
+# Screenshots  
+    
 # Installasjon
 
 **Installer prosjektet:**  
