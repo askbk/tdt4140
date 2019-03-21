@@ -16,6 +16,7 @@
 Serveren kjører på localhost:8000
 
 **NB**: Databasen ligger på NTNU sine servere, og man må derfor være koblet på NTNU-nettet eller VPN for å kunne kjøre prosjektet
+**NB2**: For å benytte deg av sidens fulle funksjonalitet, kan ikke AdBlock e.l. være aktivert i nettleseren din
 
 **Teste prosjektet:**
 1. Kjør: `python manage.py test`
