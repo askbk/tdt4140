@@ -16,7 +16,10 @@
 Serveren kjører på localhost:8000
 
 **NB**: Databasen ligger på NTNU sine servere, og man må derfor være koblet på NTNU-nettet eller VPN for å kunne kjøre prosjektet
-  
+
+**Teste prosjektet:**
+1. Kjør: `python manage.py test`
+
 **Nullstille database:**
 1. cmd: `cd <mappen du klonet prosjektet i>/djangoframe`
 2. cmd: `python manage.py flush`
