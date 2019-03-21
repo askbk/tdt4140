@@ -31,7 +31,8 @@ Til back-end er det brukt django. Du finner mer detaljert informasjon om bruk av
 4. cmd: `pip install Django`
 5. cmd: `pip install Pillow`
 6. cmd: `pip install django-crispy-forms`
-7. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.
+7. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.  
+**NB:** Viktig å velge riktig version. Hvis du for eksempel kjører python 3.7.2 på windows 64-bits, så vil det stå 3.7 et sted i navnet på filen.
 8. Last ned Microsoft Visual Studio https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
 9. Velg Visual C++ build tools fra workloads
 10. Velg Windows 10 SDK og fjern avkrysning på de andre alternativene
