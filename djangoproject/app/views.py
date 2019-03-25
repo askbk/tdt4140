@@ -251,7 +251,7 @@ def edit_investor(request):
             investor_form = InvestorForm(instance=investor)
         context = {
             'user_form': user_form,
-            'person_form': person_form,
+            'investor_form': investor_form,
         }
         return render(request, 'edit_investor.html',context)
     else:
