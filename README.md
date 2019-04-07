@@ -27,7 +27,7 @@ Til back-end er det brukt django. Du finner mer detaljert informasjon om teknolo
 **Installer prosjektet:**  
 1. cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`
 2. Last ned nyeste versjon av python på https://www.python.org/downloads/. Sørg for at python legges til i path under installasjonen.
-3. Sørg for at du bruker en oppdatert versjon av pip https://pip.pypa.io/en/stable/installing/#upgrading-pip
+3. Last ned en oppdatert versjon av pip https://pip.pypa.io/en/stable/installing/#upgrading-pip
 4. cmd: `pip install Django`
 5. cmd: `pip install Pillow`
 6. cmd: `pip install django-crispy-forms`
