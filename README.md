@@ -35,23 +35,22 @@ Detaljert informasjon om rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/
 1. Klon prosjektet:  
 cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`  
   
-2. Last ned nyeste versjon av [python](https://www.python.org/downloads/) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.
-  
-3. Last ned [mysqlclient-wheel](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient), som passer til din python-versjon. Dersom du for eksempel bruker python 3.7, vil du bruke den med 37 i navnet.  
-  
-4. Last ned mysqlclient ved .whl filen du lastet ned  
+2. Last ned [Python 3.7](https://www.python.org/downloads/release/python-373/) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.  
+**NB:** Python 3.5 og senere kan brukes, men hvis ikke python 3.7 brukes, må en egen [mysqlclient.whl](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient) lastes ned for din python-versjon.  
+
+3. Last ned mysqlclient ved .whl filen du lastet ned  
 for eksempel, cmd: `pip install ./mysqlclient-1.4.2-cp37-cp37m-win32.whl`  
   
-5. Installer avhengigheter:   
+4. Installer avhengigheter:   
 cmd: `pip install -r requirements.txt`  
   
-6. Installer VPN for å få tilgang til NTNU-databasen, dette steget kan hoppes over dersom man befinner seg på NTNU sine lokaler og nett.  
+5. Installer VPN for å få tilgang til NTNU-databasen, dette steget kan hoppes over dersom man befinner seg på NTNU sine lokaler og nett.  
 Detaljert installasjonsguide til VPN finner du [her](https://innsida.ntnu.no/wiki/-/wiki/Norsk/Installere+VPN)
   
-7. Kjør serveren:  
+6. Kjør serveren:  
 cmd: `python manage.py runserver`  
   
-8. Naviger til:  
+7. Naviger til:  
 http://localhost:8000/   
   
 Dersom du ser at noe ikke fungerer som det skal etter denne installasjonen, kan du henvende deg til Magnus Ramm på magnram@stud.ntnu.no.  
