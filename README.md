@@ -4,7 +4,7 @@ Dette prosjektet er laget i samarbeid med kunden Momentum. Vi fikk i oppdrag å 
   
 # Motivasjon
 
-Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
+Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent til å virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med kundens ønske. 
   
 # Teknologier og rammeverk  
 **Back-end:**  
