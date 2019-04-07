@@ -8,7 +8,7 @@ Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling.
   
 # Teknologier og rammeverk  
 I prosjektet har vi brukt HTML, CSS og JavaScript til front-end, i tillegg til crispy-forms bootstrap for skjemaer.  
-Til back-end er det brukt django. Du finner mer detaljert informasjon om bruk av django på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
+Til back-end er det brukt django. Du finner mer detaljert informasjon om teknologier og rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
   
 # Screenshots
 <img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="400">
