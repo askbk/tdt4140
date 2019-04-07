@@ -7,8 +7,15 @@ Dette prosjektet er laget i samarbeid med kunden Momentum. Vi fikk i oppdrag å 
 Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent som vil virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med deres ønske. 
   
 # Teknologier og rammeverk  
-I prosjektet har vi brukt HTML, CSS og JavaScript til front-end, i tillegg til crispy-forms bootstrap for skjemaer.  
-Til back-end er det brukt django. Du finner mer detaljert informasjon om teknologier og rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
+**Back-end:**  
+[Python 3.7+](https://www.python.org/): Det valgte språket.  
+[Django](https://www.djangoproject.com/): Web-rammeverk skrevet i Python, brukes til å tjene alle sider.  
+[MySql](https://www.mysql.com/): Vår DBMS. Databasen er hostet på NTNU sine servere, krever VPN utenfor universitetets lokaler.  
+  
+**Front-end:**  
+[crispy-forms](https://django-crispy-forms.readthedocs.io/): Django-applikasjon som lar deg enkelt style skjemaene dine, ved hjelp av Bootstrap.
+
+Detaljert informasjon om rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
   
 # Screenshots
 <img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="400">
@@ -24,7 +31,7 @@ Til back-end er det brukt django. Du finner mer detaljert informasjon om teknolo
 
 # Installasjon
 
-**Installer prosjektet:**  
+**Installer prosjektet (Windows):**  
 1. cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`
 2. Last ned nyeste versjon av python på https://www.python.org/downloads/. Sørg for at python legges til i path under installasjonen.
 3. Last ned en oppdatert versjon av pip https://pip.pypa.io/en/stable/installing/#upgrading-pip
@@ -41,6 +48,8 @@ Til back-end er det brukt django. Du finner mer detaljert informasjon om teknolo
 13. cmd: lokaliser mappen du klonet prosjektet til og gå inn i djangoframe
 14. cmd: `python manage.py runserver`
 Serveren kjører på localhost:8000
+
+**Andre brukere: **
 
 **NB**: Databasen ligger på NTNU sine servere, og man må derfor være koblet på NTNU-nettet eller VPN for å kunne kjøre prosjektet  
 **NB2**: For å benytte deg av sidens fulle funksjonalitet, kan ikke AdBlock e.l. være aktivert i nettleseren din  
