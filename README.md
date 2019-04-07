@@ -31,26 +31,23 @@ Detaljert informasjon om rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/
 
 # Installasjon
 
-**Installer prosjektet (Windows):**  
-1. cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`
-2. Last ned nyeste versjon av python på https://www.python.org/downloads/. Sørg for at python legges til i path under installasjonen.
-3. Last ned en oppdatert versjon av pip https://pip.pypa.io/en/stable/installing/#upgrading-pip
-4. cmd: `pip install Django`
-5. cmd: `pip install Pillow`
-6. cmd: `pip install django-crispy-forms`
-7. Gå til: https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient.Then. Sjekk hvilken versjon du kjører av Python og merk deg om det er 32-bits eller 64-bits. Søk etter “mysqlclient” på siden og last ned riktig versjon av mysqlclient.  
-**NB:** Viktig å velge riktig version. Hvis du for eksempel kjører python 3.7.2 på windows 64-bits, så vil det stå 3.7 et sted i navnet på filen.
-8. Last ned Microsoft Visual Studio https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15
-9. Velg Visual C++ build tools fra workloads
-10. Velg Windows 10 SDK og fjern avkrysning på de andre alternativene
-11. Last ned wheel hvis nødvendig med pip install.
-12. Finn lokasjonen til mysqlfilen og installer den med pip/wheel. Hvis du får problemer her kan du først forsøke å oppdatere pip og sjekke om du faktisk har installert wheel. Får du en feilmelding som sier at filen ikke støttes på denne plattformen, har du valgt feil mysqlclient-fil. Gå tilbake til steg 6 for å løse dette.
-13. cmd: lokaliser mappen du klonet prosjektet til og gå inn i djangoframe
-14. cmd: `python manage.py runserver`
-Serveren kjører på localhost:8000
-
-**Andre brukere: **
-
+**Installer prosjektet:**  
+1. Klon prosjektet:  
+cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`  
+  
+2. Last ned nyeste versjon av [python](https://www.python.org/downloads/) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.
+  
+3. Installer avhengigheter:   
+cmd: `pip install -r requirements.txt`  
+  
+4. Kjør serveren:  
+cmd: `python manage.py runserver`  
+  
+5. Naviger til:  
+http://localhost:8000/   
+  
+Dersom du ser at noe ikke fungerer som det skal etter denne installasjonen, kan du henvende deg til Magnus Ramm på magnram@stud.ntnu.no.  
+  
 **NB**: Databasen ligger på NTNU sine servere, og man må derfor være koblet på NTNU-nettet eller VPN for å kunne kjøre prosjektet  
 **NB2**: For å benytte deg av sidens fulle funksjonalitet, kan ikke AdBlock e.l. være aktivert i nettleseren din  
 
