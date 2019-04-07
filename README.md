@@ -37,16 +37,21 @@ cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-
   
 2. Last ned nyeste versjon av [python](https://www.python.org/downloads/) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.
   
-3. Installer avhengigheter:   
+3. Last ned [mysqlclient-wheel](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient), som passer til din python-versjon. Dersom du for eksempel bruker python 3.7, vil du bruke den med 37 i navnet.  
+  
+4. Last ned mysqlclient ved .whl filen du lastet ned  
+for eksempel, cmd: `pip install ./mysqlclient-1.4.2-cp37-cp37m-win32.whl`  
+  
+5. Installer avhengigheter:   
 cmd: `pip install -r requirements.txt`  
   
-4. Installer VPN for å få tilgang til NTNU-databasen, dette steget kan hoppes over dersom man befinner seg på NTNU sine lokaler og nett.  
+6. Installer VPN for å få tilgang til NTNU-databasen, dette steget kan hoppes over dersom man befinner seg på NTNU sine lokaler og nett.  
 Detaljert installasjonsguide til VPN finner du [her](https://innsida.ntnu.no/wiki/-/wiki/Norsk/Installere+VPN)
   
-5. Kjør serveren:  
+7. Kjør serveren:  
 cmd: `python manage.py runserver`  
   
-6. Naviger til:  
+8. Naviger til:  
 http://localhost:8000/   
   
 Dersom du ser at noe ikke fungerer som det skal etter denne installasjonen, kan du henvende deg til Magnus Ramm på magnram@stud.ntnu.no.  
