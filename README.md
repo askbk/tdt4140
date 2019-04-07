@@ -40,16 +40,18 @@ cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-
 3. Installer avhengigheter:   
 cmd: `pip install -r requirements.txt`  
   
-4. Kjør serveren:  
+4. Installer VPN for å få tilgang til NTNU-databasen, dette steget kan hoppes over dersom man befinner seg på NTNU sine lokaler og nett.  
+Detaljert installasjonsguide til VPN finner du [her](https://innsida.ntnu.no/wiki/-/wiki/Norsk/Installere+VPN)
+  
+5. Kjør serveren:  
 cmd: `python manage.py runserver`  
   
-5. Naviger til:  
+6. Naviger til:  
 http://localhost:8000/   
   
 Dersom du ser at noe ikke fungerer som det skal etter denne installasjonen, kan du henvende deg til Magnus Ramm på magnram@stud.ntnu.no.  
   
-**NB**: Databasen ligger på NTNU sine servere, og man må derfor være koblet på NTNU-nettet eller VPN for å kunne kjøre prosjektet  
-**NB2**: For å benytte deg av sidens fulle funksjonalitet, kan ikke AdBlock e.l. være aktivert i nettleseren din  
+**NB**: For å benytte deg av sidens fulle funksjonalitet, kan ikke AdBlock e.l. være aktivert i nettleseren din  
 
 # Vedlikehold
 
@@ -74,5 +76,5 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 
 # Testing
 
-Alle unit-testene kjøres med følgende kommando  
+Dette prosjektet har kun benyttet seg av unit-tester. Mer om test-coverage på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**. Alle unit-testene kjøres ved:  
 cmd: `python manage.py test`
