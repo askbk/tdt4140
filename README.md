@@ -60,7 +60,7 @@ Dersom du ser at noe ikke fungerer som det skal etter denne installasjonen, kan 
 # Vedlikehold
 
 **Nullstille database:**
-1. cmd: `cd <mappen du klonet prosjektet i>/djangoframe`
+1. cmd: `cd ./gruppe-35/djangoproject`
 2. cmd: `python manage.py flush`
 svar ‘yes’ hvis du er sikker på at du vil nullstille  
 *Når man nullstiller databasen må man på nytt legge til brukergruppene “Startup” og “Investor” osv  i databasen for å kunne gi disse rettighetene. Se neste steg.*
