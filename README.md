@@ -38,7 +38,7 @@ cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-
 2. Last ned [Python 3.7](https://www.python.org/downloads) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.  
 **NB:** Python 3.5 og senere kan brukes, men hvis ikke python 3.7 brukes, må en egen [mysqlclient.whl](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient) lastes ned for din python-versjon.  
 
-3. Installer mysqlclient:  
+3. Bytt mappe til gruppe-35, og installer mysqlclient:  
 cmd: `pip install ./mysqlclient-1.4.2-cp37-cp37m-win32.whl`  
   
 4. Installer avhengigheter:   
@@ -48,7 +48,7 @@ cmd: `pip install -r requirements.txt`
 Detaljert installasjonsguide til VPN finner du [her](https://innsida.ntnu.no/wiki/-/wiki/Norsk/Installere+VPN)
   
 6. Kjør serveren:  
-cmd: `python manage.py runserver`  
+cmd: `python djangoproject/manage.py runserver`  
   
 7. Naviger til:  
 http://localhost:8000/   
