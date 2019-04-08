@@ -47,7 +47,7 @@
 <!-- Legger in bio og knappene-->
   <p> {{profile.bio}} </p>
   {% if profile|to_class_name == "Startup" %}
-  <a href="https://{{profile.homepage}}">https://{{profile.homepage}}</a>
+  <a href="{{profile.homepage}}">{{profile.homepage}}</a>
   <hr class="mt-0 mb-4">
 
   <div class="circle-container">
