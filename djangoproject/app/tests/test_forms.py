@@ -28,6 +28,9 @@ class PersonForm_Test(TestCase):
         form = PersonForm(data={'email': "usertest@usertest.no", 'fullname': "user", 'password1': "User123456", 'password2':"User123456",'username':"test",'bio':"fwegwe", 'postal_code':"0976", 'city':"Trondheim", 'street_address': "Gløs 11 B", 'country': "Norway"})
         self.assertTrue(form.is_valid())
 
+    #
+    def test_PersonForm_invalid(self): #Test for aa sjekke om skjemaet ikke fungerer er ikke paa plass
+        return None
 
 class InvestorForm_Test(TestCase):
     # Valid Form Data
@@ -42,7 +45,7 @@ class InvestorForm_Test(TestCase):
 
 class StartupForm_Test(TestCase):
     # Valid Form Data
-    def test_StartupForm_valid(self):
+    def test_StartupForm_valid(self): #test for validering om at skjemaet fungerer er ikke plass
         #phases = Phase.objects.get(id=1)
         #tags = Tag.objects.all()
         #form = StartupForm(data={'bio':"24", 'tags':tags,'phase':2})
