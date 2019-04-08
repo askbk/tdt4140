@@ -1,7 +1,7 @@
 image: python:3.7
 test:
   script:
-  - python3.7 -m pip install -r requirements.txt
+  - python3.7 -m pip install -r requirementsCI.txt
   - python3.7 djangoproject/manage.py test app
 
 #  - apt-get update
