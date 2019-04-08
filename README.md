@@ -38,8 +38,8 @@ cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-
 2. Last ned [Python 3.7](https://www.python.org/downloads/release/python-373/) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.  
 **NB:** Python 3.5 og senere kan brukes, men hvis ikke python 3.7 brukes, må en egen [mysqlclient.whl](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient) lastes ned for din python-versjon.  
 
-3. Last ned mysqlclient ved .whl filen du lastet ned  
-for eksempel, cmd: `pip install ./mysqlclient-1.4.2-cp37-cp37m-win32.whl`  
+3. Installer mysqlclient:  
+cmd: `pip install ./mysqlclient-1.4.2-cp37-cp37m-win32.whl`  
   
 4. Installer avhengigheter:   
 cmd: `pip install -r requirements.txt`  
