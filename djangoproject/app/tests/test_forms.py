@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from app.models import Address, Startup, Tag, Person, Advert
 from django.forms import ModelForm
 from .forms import *   # import all forms
-
+"""
 class Setup_Class(TestCase):
 
     def setUp(self):
@@ -22,7 +22,7 @@ class User_Form_Test(TestCase):
     def test_UserForm_invalid(self):
         form = UserForm(data={'email': "", 'password': "mp", 'first_name': "mp", 'phone': ""})
         self.assertFalse(form.is_valid())
-
+"""
 
 
 '''
