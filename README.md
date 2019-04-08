@@ -35,7 +35,7 @@ Detaljert informasjon om rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/
 1. Klon prosjektet, last ned [git](https://git-scm.com/downloads) dersom du ikke har det allerede:  
 cmd: `git clone https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35.git`  
   
-2. Last ned [Python 3.7](https://www.python.org/downloads/release/python-373/) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.  
+2. Last ned [Python 3.7](https://www.python.org/downloads) med en oppdatert versjon av [pip](https://pip.pypa.io/en/stable/installing/#upgrading-pip). Sørg for at python legges til i path under installasjonen.  
 **NB:** Python 3.5 og senere kan brukes, men hvis ikke python 3.7 brukes, må en egen [mysqlclient.whl](https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient) lastes ned for din python-versjon.  
 
 3. Installer mysqlclient:  
