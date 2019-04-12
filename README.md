@@ -70,8 +70,13 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 2. cmd: `python manage.py createsuperuser`
 3. skriv inn brukernavn og passord når cmd spør om det
   
-
 # Testing
-
 Dette prosjektet har kun benyttet seg av unit-tester. Mer om test-coverage på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**. Alle unit-testene kjøres ved:  
 cmd: `python manage.py test`
+
+# Utviklet av
+* Julie Sydow Mo
+* Ask Berstad Kollstveit
+* Catherine Xu
+* Lars Digerud
+* Magnus Ramm
