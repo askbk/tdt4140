@@ -22,7 +22,7 @@ Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling.
 **Front-end:**  
 [crispy-forms](https://django-crispy-forms.readthedocs.io/): Django-applikasjon som lar deg enkelt style skjemaene dine, ved hjelp av Bootstrap.
 
-Detaljert informasjon om rammeverk på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**.
+Detaljert informasjon om rammeverk på **[Dokumentasjon av kode](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/Dokumentasjon-av-kode) på wiki**.
   
 # Screenshots
 <img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="400">
@@ -78,5 +78,5 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 3. skriv inn brukernavn og passord når cmd spør om det
   
 # Testing
-Dette prosjektet har kun benyttet seg av unit-tester. Mer om test-coverage på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**. Alle unit-testene kjøres ved:  
-cmd: `python manage.py test`
+Dette prosjektet har kun benyttet seg av unit-tester. Mer om test-coverage på **[Oversikt over kodekvalitet](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/oversikt-over-kodekvalitet) på wiki**. Alle unit-testene kjøres ved:  
+cmd: `python manage.py test app`
