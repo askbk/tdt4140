@@ -5,6 +5,13 @@ Dette prosjektet er laget i samarbeid med kunden Momentum. Vi fikk i oppdrag å 
 # Motivasjon
 
 Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling. Prosjektet gikk ut på at vi skulle få en studentassistent til å virke som en kunde for bedriften Momentum. I dialog med denne kunden har vi utviklet et produkt i tråd med kundens ønske. 
+ 
+# Team
+* Julie Sydow Mo
+* Ask Berstad Kollstveit
+* Catherine Xu
+* Lars Digerud
+* Magnus Ramm
   
 # Teknologier og rammeverk  
 **Back-end:**  
@@ -73,10 +80,3 @@ svar ‘yes’ hvis du er sikker på at du vil nullstille
 # Testing
 Dette prosjektet har kun benyttet seg av unit-tester. Mer om test-coverage på **[wiki](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/home)-siden**. Alle unit-testene kjøres ved:  
 cmd: `python manage.py test`
-
-# Utviklet av
-* Julie Sydow Mo
-* Ask Berstad Kollstveit
-* Catherine Xu
-* Lars Digerud
-* Magnus Ramm
