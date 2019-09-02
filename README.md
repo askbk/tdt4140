@@ -25,10 +25,10 @@ Prosjektet ble laget i forbindelse med NTNU-emnet TDT4140: Programvareutvikling.
 Detaljert informasjon om rammeverk på **[Dokumentasjon av kode](https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/wikis/Dokumentasjon-av-kode) på wiki**.
   
 # Screenshots
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/intro.PNG" width="400">
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/forside.PNG" width="400">
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/startups.PNG" width="400">
-<img src="https://gitlab.stud.idi.ntnu.no/programvareutvikling-v19/gruppe-35/raw/master/screenshots/adgogo.PNG" width="400">  
+<img src="screenshots/intro.PNG" width="400">
+<img src="screenshots/forside.PNG" width="400">
+<img src="screenshots/startups.PNG" width="400">
+<img src="screenshots/adgogo.PNG" width="400">  
   
 
 **Bilde 1**: Forside del 1  
