@@ -1,4 +1,4 @@
-Django==2.1.11
+Django==2.2.24
 django-crispy-forms==1.7.2
 Pillow==6.2.0
 mysqlclient-1.4.2-cp37-cp37m-win32.whl
